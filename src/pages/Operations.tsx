@@ -5,11 +5,6 @@ import { useState } from "react";
 const Operations = () => {
     const [showAmount, setShowAmount] = useState(false);
 
-    const handleInquirySubmit = (e: React.FormEvent) => {
-        e.preventDefault();
-        setShowAmount(true);
-    };
-
     return (
         <div className="operations-container">
             <div className="header-row">

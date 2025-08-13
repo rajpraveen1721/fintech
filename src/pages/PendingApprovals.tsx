@@ -1,6 +1,5 @@
 import { useState } from "react";
 import "./PendingApprovals.scss";
-import { TextField } from "@mui/material";
 
 interface Approval {
     id: string;
