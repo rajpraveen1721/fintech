@@ -1,19 +1,18 @@
 .role-approver-container {
-    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
     background: #f8f9fc;
-    font-family: 'Inter', sans-serif;
+    padding: 2rem;
     min-height: calc(100vh - 80px);
 
-    .header {
+    .header-row {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin-bottom: 1.5rem;
 
-        h2 {
-            font-size: 1.5rem;
+        .title {
             font-weight: 600;
-            color: #1a1a1a;
         }
     }
 
@@ -23,7 +22,6 @@
         border: 1px solid #DDDDDD;
         border-radius: 16px;
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
-        margin-bottom: 2rem;
 
         .approver-header {
             border-bottom: 1px solid #DDDDDD;
@@ -31,12 +29,18 @@
             justify-content: space-between;
             align-items: center;
             padding: 1rem 2rem;
+            flex-wrap: wrap; // ✅ responsive header
 
             .title {
                 font-weight: 600;
+                margin-bottom: 0.5rem;
             }
 
             .actions {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px;
+
                 .add-btn {
                     background: #ffffff;
                     color: #009999;
@@ -46,7 +50,6 @@
                     font-weight: 500;
                     font-size: 14px;
                     cursor: pointer;
-                    margin-right: 20px;
                 }
 
                 .save-btn {
@@ -69,6 +72,11 @@
         .approver-form {
             width: 50%;
             padding: 1rem 2rem;
+
+            @media (max-width: 768px) {
+                width: 100%; // ✅ full width on tablet & mobile
+                padding: 1rem;
+            }
         }
 
         .approver-row {
@@ -76,18 +84,30 @@
             align-items: center;
             gap: 8px;
             margin: 12px 0px;
+            flex-wrap: wrap; // ✅ prevent overflow
 
             .field-wrapper {
                 flex: 1;
                 display: flex;
                 flex-direction: row;
                 align-items: center;
+                min-width: 200px; // ✅ better control
+
+                @media (max-width: 576px) {
+                    flex-direction: column;
+                    align-items: flex-start;
+                }
 
                 .form-label {
                     font-weight: 500;
                     color: #374151;
                     white-space: nowrap;
                     margin-right: 20px;
+
+                    @media (max-width: 576px) {
+                        margin-right: 0;
+                        margin-bottom: 4px;
+                    }
                 }
 
                 .form-control {
@@ -95,6 +115,9 @@
                     margin-bottom: 0.75rem;
                     font-size: 1rem;
                     border-width: 2px;
+                    appearance: auto;
+                    -webkit-appearance: auto;
+                    -moz-appearance: auto;
 
                     &:hover,
                     &:focus {
@@ -118,22 +141,9 @@
                 }
             }
         }
-
     }
 
-    .add-btn {
-        background: #ffffff;
-        color: #009999;
-        border: 1px solid #009999;
-        padding: 6px 12px;
-        border-radius: 4px;
-        font-weight: 500;
-        font-size: 14px;
-        cursor: pointer;
-        margin-right: 20px;
-    }
-
-    // Chip styles
+    // Chips
     .chip-container {
         display: flex;
         flex-wrap: wrap;
@@ -188,5 +198,4 @@
             font-size: 13px;
         }
     }
-
 }

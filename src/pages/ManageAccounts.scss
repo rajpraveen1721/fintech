@@ -1,6 +1,9 @@
 .manage-account-container {
-  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
   background: #f8f9fc;
+  padding: 2rem;
   min-height: calc(100vh - 80px);
 
   .header-row {
@@ -14,21 +17,28 @@
     }
   }
 
-  .add-btn {
-    background: #ffffff;
-    color: #009999;
-    border: 1px solid #009999;
-    padding: 6px 12px;
-    border-radius: 4px;
-    font-weight: 500;
-    font-size: 14px;
-    cursor: pointer;
-    margin-right: 20px;
-  }
-
   .checkbox-group {
     display: flex;
     flex-wrap: wrap;
     gap: 15px;
+  }
+}
+
+@media (max-width: 992px) {
+  .manage-account-container {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .manage-account-container {
+    padding: 1rem;
+
+  }
+}
+
+@media (max-width: 480px) {
+  .manage-account-container {
+    padding: 0.75rem;
   }
 }

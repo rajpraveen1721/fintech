@@ -48,9 +48,9 @@ interface User {
 
 const RoleApprover = () => {
 
-const [showModal, setShowModal] = useState(false);
+    const [showModal, setShowModal] = useState(false);
 
-    const [users, setUsers] = useState<User[]>( [
+    const [users, setUsers] = useState<User[]>([
         {
             id: 1,
             user: "mutaz@xxx.gmail.com",
@@ -75,7 +75,7 @@ const [showModal, setShowModal] = useState(false);
         }
     ]);
 
-    const columns: GridColDef[]  = [
+    const columns: GridColDef[] = [
         { headerName: "User", field: "user", flex: 1 },
         { headerName: "Department", field: "department", flex: 1 },
         {
@@ -95,7 +95,7 @@ const [showModal, setShowModal] = useState(false);
             headerName: 'Actions',
             flex: 0.5,
             sortable: false,
-            renderCell: (params:any) => (
+            renderCell: (params: any) => (
                 <div className="actions-cell">
                     <FaEdit className="edit-icon" onClick={() => setShowModal(true)} />
                     <FaTrash className="delete-icon" onClick={() => handleDelete(params.row.id)} />
@@ -105,7 +105,7 @@ const [showModal, setShowModal] = useState(false);
     ];
 
     const handleDelete = (id: number) => {
-        setUsers(users.filter((user:any) => user.id !== id));
+        setUsers(users.filter((user: any) => user.id !== id));
     };
 
     const [approvers, setApprovers] = useState([1, 2, 3]);
@@ -126,8 +126,8 @@ const [showModal, setShowModal] = useState(false);
     return (
         <>
             <div className="role-approver-container">
-                <div className="header">
-                    <h2>Role/Approver</h2>
+                <div className="header-row">
+                    <h4 className='title'>Role/Approver</h4>
                 </div>
 
                 <div className="approver-card">
@@ -178,11 +178,11 @@ const [showModal, setShowModal] = useState(false);
                         <div className='actions'>
                             <TextField
                                 size="small"
-                                placeholder="Search transactions..."
+                                placeholder="Search users..."
                                 className="search-input"
                                 variant="outlined"
                             />
-                            <button className="add-btn">+ Add User</button>
+                            <button className="add-btn" onClick={() => setShowModal(true)}>+ Add User</button>
                             <button className='export-btn'>Export</button>
                         </div>
                     </div>
@@ -212,7 +212,7 @@ const [showModal, setShowModal] = useState(false);
                 dialogClassName="custom-dialog-container"
             >
                 <Modal.Header closeButton>
-                    <Modal.Title>New User</Modal.Title>
+                    <Modal.Title>Add User</Modal.Title>
                 </Modal.Header>
 
                 <Modal.Body>

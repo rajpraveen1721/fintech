@@ -60,7 +60,7 @@ const TransactionDetails = () => {
                 <h4 className='title'>Transaction Overview</h4>
             </div>
 
-            <div className="table-card mb-4">
+            <div className="table-card">
                 <div className='header-content'>
                     <h5 className='table-title'>Pending Transactions</h5>
                     <div className='actions'>

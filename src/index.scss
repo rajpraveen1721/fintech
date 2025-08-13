@@ -13,12 +13,100 @@ body {
   font-family: 'Inter', sans-serif;
 }
 
-// Table styles
+
+// Custom Dialog styles start
+.custom-dialog-container {
+  .modal-header {
+    padding: 1rem 2rem;
+    border-bottom: 1px solid #dddddd;
+
+    .modal-title {
+      font-weight: 600;
+    }
+  }
+
+  .modal-footer {
+    border-top: 1px solid #dddddd;
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.75rem;
+  }
+
+  .modal-body {
+    padding: 1rem 2rem;
+
+    form {
+      .form-group {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .form-label {
+        font-weight: 500;
+        color: #374151;
+      }
+
+      .form-control {
+        border-radius: 0.25rem;
+        margin-bottom: 0.75rem;
+        font-size: 1rem;
+        border-width: 2px;
+        //select field arrow
+        appearance: auto;
+        -webkit-appearance: auto;
+        -moz-appearance: auto;
+
+        &:hover,
+        &:focus {
+          border: 2px solid #009999 !important;
+          box-shadow: none;
+        }
+      }
+    }
+
+  }
+
+
+  .btn-cancel {
+    width: 100px;
+    color: #009999;
+    background: #ffffff;
+    border: 1px solid #009999;
+    padding: 6px 12px;
+    font-weight: 500;
+    font-size: 14px;
+
+    &:hover,
+    &:focus {
+      background: #009999;
+      color: #ffffff;
+    }
+  }
+
+  .btn-save {
+    width: 100px;
+    background: #009999;
+    color: #ffffff;
+    border: none;
+    padding: 6px 12px;
+    font-weight: 500;
+    font-size: 14px;
+
+    &:hover,
+    &:focus {
+      background-color: #007777;
+    }
+  }
+}
+// Custom dialog styles end
+
+// Custom table styles start
 .table-card {
   background: #fff;
   border: 1px solid #DDDDDD;
   border-radius: 16px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  width: 100%;
 
   .header-content {
     display: flex;
@@ -26,17 +114,28 @@ body {
     align-items: center;
     padding: 1rem 2rem;
     border-bottom: 1px solid #DDDDDD;
+    flex-wrap: wrap;
+    gap: 10px;
 
     .table-title {
       font-weight: 600;
+      font-size: 1rem;
+      flex: 1 1 auto;
     }
 
     .actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 10px;
+      flex: 1 1 auto;
+
       .search-input {
         width: 250px;
         border-radius: 12px;
         background: #FFFFFF;
-        margin-right: 20px;
+        margin-right: 0;
 
         input {
           padding: 8px 12px;
@@ -55,6 +154,17 @@ body {
         &.Mui-focused fieldset {
           border-color: #009999 !important;
         }
+      }
+
+      .add-btn {
+        background: #ffffff;
+        color: #009999;
+        border: 1px solid #009999;
+        padding: 6px 12px;
+        border-radius: 4px;
+        font-weight: 500;
+        font-size: 14px;
+        cursor: pointer;
       }
 
       .export-btn {
@@ -76,10 +186,13 @@ body {
 
   .table-container {
     padding: 2rem;
+    overflow-x: auto;
 
     .data-grid {
       border-radius: 12px;
       box-shadow: 0 1px 6px rgb(0 0 0 / 0.1);
+      // min-width: 100%;
+      min-width: 900px;
 
       p {
         margin: 0;
@@ -98,6 +211,7 @@ body {
       .MuiDataGrid-cell {
         font-size: 0.85rem;
         color: #333;
+        white-space: nowrap;
       }
 
       .actions-cell {
@@ -105,97 +219,84 @@ body {
         gap: 10px;
         align-items: center;
 
-        .edit-icon {
-          // color: #007bff;
-          cursor: pointer;
-        }
-
+        .edit-icon,
         .delete-icon {
-          // color: #dc3545;
           cursor: pointer;
         }
       }
     }
+
   }
 }
 
-//Dialog styles
-.custom-dialog-container {
-    .modal-header {
-        padding: 1rem 2rem;
-        border-bottom: 1px solid #dddddd;
+@media (max-width: 992px) {
+  .table-card {
+    .header-content {
+      padding: 1rem;
 
-        .modal-title {
-            font-weight: 600;
+      .table-title {
+        font-size: 0.95rem;
+      }
+
+      .actions {
+        .search-input {
+          width: 200px;
         }
+      }
     }
 
-    .modal-footer {
-        border-top: 1px solid #dddddd;
-        display: flex;
-        justify-content: flex-end;
-        gap: 0.75rem;
+    .table-container {
+      padding: 1rem;
     }
-
-    .modal-body {
-        padding: 1rem 2rem;
-
-        form {
-            .form-group {
-                display: flex;
-                flex-direction: column;
-            }
-
-            .form-label {
-                font-weight: 500;
-                color: #374151;
-            }
-
-            .form-control {
-                border-radius: 0.25rem;
-                margin-bottom: 0.75rem;
-                font-size: 1rem;
-                border-width: 2px;
-
-                &:hover,
-                &:focus {
-                    border: 2px solid #009999 !important;
-                    box-shadow: none;
-                }
-            }
-        }
-
-    }
-
-
-    .btn-cancel {
-        width: 100px;
-        color: #009999;
-        background: #ffffff;
-        border: 1px solid #009999;
-        padding: 6px 12px;
-        font-weight: 500;
-        font-size: 14px;
-
-        &:hover,
-        &:focus {
-            background: #009999;
-            color: #ffffff;
-        }
-    }
-
-    .btn-save {
-        width: 100px;
-        background: #009999;
-        color: #ffffff;
-        border: none;
-        padding: 6px 12px;
-        font-weight: 500;
-        font-size: 14px;
-
-        &:hover,
-        &:focus {
-            background-color: #007777;
-        }
-    }
+  }
 }
+
+@media (max-width: 768px) {
+  .table-card {
+    .header-content {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+
+      .actions {
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+
+        .search-input {
+          width: 100%;
+        }
+
+        .export-btn {
+          width: 100%;
+        }
+
+        .add-btn {
+          width: 100%;
+        }
+      }
+    }
+
+    .table-container {
+      padding: 1rem;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .table-card {
+    border-radius: 10px;
+
+    .header-content {
+      .table-title {
+        font-size: 0.9rem;
+      }
+    }
+
+    .table-container {
+      padding: 0.5rem;
+    }
+  }
+}
+
+// Custom table styles end

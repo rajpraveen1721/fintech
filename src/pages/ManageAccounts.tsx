@@ -97,7 +97,7 @@ const ManageAccounts = () => {
             dialogClassName="custom-dialog-container"
             >
                 <Modal.Header closeButton>
-                    <Modal.Title>Create Account</Modal.Title>
+                    <Modal.Title>Add Account</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <Form>
