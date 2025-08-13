@@ -17,8 +17,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
     { label: "Pending Approvals", path: "/pending-approvals"},
     { label: "Role Approver", path: "/role-approver" },
     { label: "Payments", path: "/payments"},
-    { label: "Operations", path: "/operations" },
-    { label: "Contact Us", path: "/contactus" },
+    { label: "SADAD", path: "/operations" }
   ];
 
   const handleNavigation = (path: string) => {
