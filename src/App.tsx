@@ -23,7 +23,7 @@ export default function App() {
         <Route path="/request-demo" element={<RequestDemo />} />
         <Route path="/role-approver" element={<RoleApprover />} />
         <Route path="/transaction-details" element={<TransactionDetails />} /> 
-        <Route path="/manage-account" element={<ManageAccounts />} /> 
+        <Route path="/manage-accounts" element={<ManageAccounts />} /> 
 
       </Routes>
     </BrowserRouter>
