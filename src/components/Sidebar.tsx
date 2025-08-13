@@ -14,7 +14,10 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
     { label: "Dashboard", path: "/dashboard" },
     { label: "Manage Accounts", path: "/manage-accounts" },
     { label: "Transaction Details", path: "/transaction-details" },
+    { label: "Pending Approvals", path: "/pending-approvals"},
     { label: "Role Approver", path: "/role-approver" },
+    { label: "Payments", path: "/payments"},
+    { label: "Operations", path: "/operations" },
     { label: "Contact Us", path: "/contactus" },
   ];
 

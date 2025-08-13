@@ -10,17 +10,10 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 24px;
 
     .title {
       font-weight: 600;
     }
-  }
-
-  .checkbox-group {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
   }
 }
 
@@ -40,5 +33,50 @@
 @media (max-width: 480px) {
   .manage-account-container {
     padding: 0.75rem;
+  }
+}
+
+.custom-dialog-container {
+  .uploaded-files {
+    margin: 10px 0px;
+    padding: 0px 10px;
+    background-color: #f0f8f7;
+    border-radius: 6px;
+
+    .file-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 6px 0;
+      border-bottom: 1px solid #ddd;
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      .file-name {
+        font-size: 14px;
+        color: #333;
+        word-break: break-word;
+      }
+
+      .remove-icon {
+        cursor: pointer;
+      }
+    }
+  }
+
+  .checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+
+    .form-check {
+      width: 20%;
+
+      @media (max-width: 480px) {
+        width: 40%;
+      }
+    }
   }
 }

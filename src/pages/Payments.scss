@@ -1,4 +1,4 @@
-.transaction-details {
+.payment-container {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
@@ -16,7 +16,7 @@
     }
   }
 
-  .data-grid {
+    .data-grid {
         .status {
             border-radius: 50px;
             padding: 4px 12px;
@@ -31,37 +31,36 @@
                 background: #ff9900;
             }
 
-            &.completed {
+            &.approved {
                 background: #43a047;
             }
 
-            &.failed {
+            &.rejected {
                 background: #e53935;
             }
 
-            &.error {
-                background: #d32f2f;
+            &.submitted {
+                background: #17a2b8;
             }
         }
     }
-
 }
 
 @media (max-width: 992px) {
-  .transaction-details {
+  .payment-container {
     padding: 1.5rem;
   }
 }
 
 @media (max-width: 768px) {
-  .transaction-details {
+  .payment-container {
     padding: 1rem;
 
   }
 }
 
 @media (max-width: 480px) {
-  .transaction-details {
+  .payment-container {
     padding: 0.75rem;
   }
 }

@@ -9,6 +9,9 @@ import ContactUs from './pages/ContactUs';
 import RoleApprover from './pages/RoleApprover';
 import TransactionDetails from './pages/TransactionDetails';
 import ManageAccounts from './pages/ManageAccounts';
+import PendingApprovals from './pages/PendingApprovals';
+import Operations from './pages/Operations';
+import Payments from './pages/Payments';
 
 export default function App() {
   return (
@@ -22,8 +25,11 @@ export default function App() {
         <Route path="/contactus" element={<ContactUs />} />
         <Route path="/request-demo" element={<RequestDemo />} />
         <Route path="/role-approver" element={<RoleApprover />} />
+        <Route path="/operations" element={<Operations />} />
+        <Route path="/payments" element={<Payments />} />
         <Route path="/transaction-details" element={<TransactionDetails />} /> 
         <Route path="/manage-accounts" element={<ManageAccounts />} /> 
+        <Route path="/pending-approvals" element={<PendingApprovals />} /> 
 
       </Routes>
     </BrowserRouter>

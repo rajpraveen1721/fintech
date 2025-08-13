@@ -94,7 +94,7 @@ body {
 
     &:hover,
     &:focus {
-      background-color: #007777;
+      background: #007777;
     }
   }
 }
@@ -205,12 +205,13 @@ body {
 
         .MuiDataGrid-columnHeaderTitle {
           font-weight: 600;
+          color: #004466;
         }
       }
 
       .MuiDataGrid-cell {
         font-size: 0.85rem;
-        color: #333;
+        color: #000000;
         white-space: nowrap;
       }
 

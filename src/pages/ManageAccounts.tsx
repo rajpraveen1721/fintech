@@ -50,6 +50,19 @@ const ManageAccounts = () => {
         },
     ];
 
+    const [ibanFiles, setIbanFiles] = useState<File[]>([]);
+
+    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const files = e.target.files;
+        if (files) {
+            setIbanFiles((prev) => [...prev, ...Array.from(files)]);
+        }
+    };
+
+    const handleRemoveFile = (index: number) => {
+        setIbanFiles((prev) => prev.filter((_, i) => i !== index));
+    };
+
     return (
         <div className="manage-account-container">
             <div className="header-row">
@@ -66,7 +79,7 @@ const ManageAccounts = () => {
                             className="search-input"
                             variant="outlined"
                         />
-                        <button className="add-btn" onClick={()=> setShowModal(true)}> + Add Account </button>
+                        <button className="add-btn" onClick={() => setShowModal(true)}> + Add Account </button>
                         <button className='export-btn'>Export</button>
                     </div>
                 </div>
@@ -91,10 +104,10 @@ const ManageAccounts = () => {
             </div>
 
             {/* Modal for Creating/Editing Account */}
-            <Modal show={showModal} onHide={() => setShowModal(false)} 
-            size="lg" 
-            centered  
-            dialogClassName="custom-dialog-container"
+            <Modal show={showModal} onHide={() => setShowModal(false)}
+                size="lg"
+                centered
+                dialogClassName="custom-dialog-container"
             >
                 <Modal.Header closeButton>
                     <Modal.Title>Add Account</Modal.Title>
@@ -104,7 +117,9 @@ const ManageAccounts = () => {
                         <Row className="mb-3">
                             <Col md={6}>
                                 <Form.Group>
-                                    <Form.Label>Bank</Form.Label>
+                                    <Form.Label>
+                                        Bank  <span style={{ color: "red" }}>*</span> 
+                                    </Form.Label>
                                     <Form.Select>
                                         <option>Select a bank</option>
                                         <option>Saudi National Bank (SNB)</option>
@@ -115,7 +130,9 @@ const ManageAccounts = () => {
                             </Col>
                             <Col md={6}>
                                 <Form.Group>
-                                    <Form.Label>Account Name</Form.Label>
+                                    <Form.Label>
+                                        Account Name  <span style={{ color: "red" }}>*</span>
+                                    </Form.Label>
                                     <Form.Control type="text" placeholder="Enter account name" />
                                 </Form.Group>
                             </Col>
@@ -124,7 +141,9 @@ const ManageAccounts = () => {
                         <Row className="mb-3">
                             <Col md={6}>
                                 <Form.Group>
-                                    <Form.Label>Account Number</Form.Label>
+                                    <Form.Label>
+                                        Account Number  <span style={{ color: "red" }}>*</span>
+                                    </Form.Label>
                                     <Form.Control type="text" placeholder="Enter account number" />
                                 </Form.Group>
                             </Col>
@@ -155,8 +174,28 @@ const ManageAccounts = () => {
                             <Col md={6}>
                                 <Form.Group>
                                     <Form.Label>IBAN</Form.Label>
-                                    <Form.Control type="text" placeholder="Enter IBAN" />
+                                    <Form.Control
+                                        type="file"
+                                        accept=".csv,.xls,.xlsx,.pdf,.jpg,.jpeg,.png"
+                                        multiple
+                                        onChange={handleFileChange}
+                                    />
                                 </Form.Group>
+
+                                {ibanFiles.length > 0 && (
+                                    <div className="uploaded-files">
+                                        {ibanFiles.map((file, index) => (
+                                            <div className="file-item" key={index}>
+                                                <span className="file-name">{file.name}</span>
+                                                <FaTrash
+                                                    className="remove-icon"
+                                                    onClick={() => handleRemoveFile(index)}
+                                                />
+                                            </div>
+                                        ))}
+                                    </div>
+                                )}
+
                             </Col>
                         </Row>
 
