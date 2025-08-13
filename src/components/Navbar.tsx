@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { FiLogOut, FiMenu } from "react-icons/fi";
 import "./Navbar.scss";
 import { authService } from "../services/AuthService";
-import Sidebar from "./sideBar";
+import Sidebar from "./Sidebar";
 
 const Navbar = () => {
   const navigate = useNavigate();
