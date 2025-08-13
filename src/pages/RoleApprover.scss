@@ -1,0 +1,192 @@
+.role-approver-container {
+    padding: 20px;
+    background: #f8f9fc;
+    font-family: 'Inter', sans-serif;
+    min-height: calc(100vh - 80px);
+
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1.5rem;
+
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+    }
+
+    .approver-card {
+        width: 100%;
+        background: #fff;
+        border: 1px solid #DDDDDD;
+        border-radius: 16px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+        margin-bottom: 2rem;
+
+        .approver-header {
+            border-bottom: 1px solid #DDDDDD;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+
+            .title {
+                font-weight: 600;
+            }
+
+            .actions {
+                .add-btn {
+                    background: #ffffff;
+                    color: #009999;
+                    border: 1px solid #009999;
+                    padding: 6px 12px;
+                    border-radius: 4px;
+                    font-weight: 500;
+                    font-size: 14px;
+                    cursor: pointer;
+                    margin-right: 20px;
+                }
+
+                .save-btn {
+                    background: #009999;
+                    color: #ffffff;
+                    padding: 6px 12px;
+                    font-weight: 500;
+                    font-size: 14px;
+                    border: none;
+                    border-radius: 4px;
+                    cursor: pointer;
+
+                    &:hover {
+                        background: #006666;
+                    }
+                }
+            }
+        }
+
+        .approver-form {
+            width: 50%;
+            padding: 1rem 2rem;
+        }
+
+        .approver-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: 12px 0px;
+
+            .field-wrapper {
+                flex: 1;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+
+                .form-label {
+                    font-weight: 500;
+                    color: #374151;
+                    white-space: nowrap;
+                    margin-right: 20px;
+                }
+
+                .form-control {
+                    border-radius: 0.25rem;
+                    margin-bottom: 0.75rem;
+                    font-size: 1rem;
+                    border-width: 2px;
+
+                    &:hover,
+                    &:focus {
+                        border: 2px solid #009999 !important;
+                        box-shadow: none;
+                    }
+                }
+            }
+
+            .remove-btn {
+                background: transparent;
+                border: none;
+                color: #dc3545;
+                cursor: pointer;
+                font-size: 16px;
+                margin-bottom: 16px;
+                padding: 4px;
+
+                &:hover {
+                    color: #a71d2a;
+                }
+            }
+        }
+
+    }
+
+    .add-btn {
+        background: #ffffff;
+        color: #009999;
+        border: 1px solid #009999;
+        padding: 6px 12px;
+        border-radius: 4px;
+        font-weight: 500;
+        font-size: 14px;
+        cursor: pointer;
+        margin-right: 20px;
+    }
+
+    // Chip styles
+    .chip-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4px;
+        position: relative;
+    }
+
+    .chip {
+        background: #e0f7fa;
+        padding: 4px 8px;
+        border-radius: 12px;
+        font-size: 12px;
+        color: #006064;
+        white-space: nowrap;
+        transition: background 0.2s ease;
+
+        &:hover {
+            background: #b2ebf2;
+        }
+    }
+
+    .chip-more {
+        background: #eeeeee;
+        padding: 4px 8px;
+        border-radius: 8px;
+        font-size: 12px;
+        cursor: pointer;
+        color: #555;
+        white-space: nowrap;
+        transition: background 0.2s ease;
+
+        &:hover {
+            background: #dcdcdc;
+        }
+    }
+
+    .more-items-popup {
+        max-height: 200px;
+        overflow-y: auto;
+        padding: 10px;
+        background: white;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+        position: absolute;
+        top: 30px;
+        left: 0;
+        z-index: 9999;
+
+        div {
+            padding: 4px 0;
+            font-size: 13px;
+        }
+    }
+
+}
