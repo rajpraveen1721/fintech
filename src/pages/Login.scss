@@ -11,7 +11,6 @@
 }
 
 .login-card {
-  width: 30%;
   background: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(10px);
   border-radius: 0.5rem;
@@ -136,6 +135,7 @@
     color: #009999;
     cursor: pointer;
     margin-bottom: 8px;
+    margin-right: 10px;
     font-weight: 500;
     display: inline-block;
 
