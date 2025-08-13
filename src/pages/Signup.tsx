@@ -9,12 +9,14 @@ const Signup = () => {
     const navigate = useNavigate();
     const [step, setStep] = useState(1);
 
-    const handleSubmit = () => {
+    const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
+        e.preventDefault(); 
         authService.saveUser({ username: "John Doe", email: "john@example.com" });
         navigate("/dashboard");
     }
 
-    const handleRequestDemo = () => {
+    const handleRequestDemo =  (e: React.MouseEvent<HTMLButtonElement>) => {
+        e.preventDefault(); 
         navigate("/contactus");
     }
 

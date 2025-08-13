@@ -6,7 +6,8 @@ const Login = () => {
 
   const navigate = useNavigate();
 
-  const handleLogin = () => {
+  const handleLogin = (e: React.MouseEvent<HTMLButtonElement>) => {
+     e.preventDefault(); 
     authService.saveUser({ username: "JohnDoe", email: "john@example.com" });
     navigate("/dashboard");
   }
@@ -44,7 +45,7 @@ const Login = () => {
             <div className="mfa-number">42</div>
           </div> */}
 
-          <button type="submit" className="login-button" onClick={handleLogin}>Login</button>
+          <button className="login-button" onClick={handleLogin}>Login</button>
 
           <div className="login-links">
             <p className="forgot-password" onClick={handleForgotPassword}>
