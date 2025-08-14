@@ -6,7 +6,7 @@ const RequestDemo = () => {
     return (
         <div className="request-demo-container">
             <div className="request-demo-card">
-                <h1>Thanks for reaching <span>Banking Bridge</span></h1>
+                <h1>Thanks for reaching <span>Omnypay</span></h1>
                 <p className="subtext">
                     Our sales team will reach you soon!
                 </p>

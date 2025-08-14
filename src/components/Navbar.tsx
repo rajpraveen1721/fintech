@@ -47,7 +47,7 @@ const Navbar = () => {
             />
           )}
           <div className="navbar-logo" onClick={() => navigate("/")}>
-            Fintech
+            OmnyPay
           </div>
         </div>
 

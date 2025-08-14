@@ -11,7 +11,7 @@ const Signup = () => {
 
     const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault(); 
-        authService.saveUser({ username: "John Doe", email: "john@example.com" });
+        authService.saveUser({ username: "Mutaz", email: "Mutaz" });
         navigate("/dashboard");
     }
 
@@ -51,7 +51,7 @@ const Signup = () => {
                         </div>
                         <h2>Simplify Your Business Onboarding</h2>
                         <p>
-                            Fintech offers a streamlined, secure, and intuitive platform to
+                            OmnyPay offers a streamlined, secure, and intuitive platform to
                             manage your business operations from day one.
                         </p>
                     </div>

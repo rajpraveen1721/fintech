@@ -8,7 +8,7 @@ const Login = () => {
 
   const handleLogin = (e: React.MouseEvent<HTMLButtonElement>) => {
      e.preventDefault(); 
-    authService.saveUser({ username: "JohnDoe", email: "john@example.com" });
+    authService.saveUser({ username: "Mutaz", email: "Mutaz@gmail.com" });
     navigate("/dashboard");
   }
 
@@ -23,7 +23,7 @@ const Login = () => {
   return (
     <div className="login-container">
       <div className="login-card">
-        <h2>Login to FinTech</h2>
+        <h2>Login to OmnyPay</h2>
         <form>
           <div className="form-group">
             <label htmlFor="username" className='form-label'>Username</label>
