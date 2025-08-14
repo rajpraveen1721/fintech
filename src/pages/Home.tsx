@@ -1,8 +1,8 @@
 import React, { useRef, useEffect, useState } from "react";
 import Dropdown from "react-bootstrap/Dropdown";
 import "./Home.scss";
-import aramcoLogo from "../assets/images/ARAMCO.png";
-import neomLogo from "../assets/images/NEOM.png";
+import aramcoLogo from "../assets/images/aramco.png";
+import neomLogo from "../assets/images/neom.png";
 import redseaLogo from "../assets/images/redsea.png";
 import fifaLogo from "../assets/images/fifa.png";
 import peopleImg from "../assets/images/people.png";
