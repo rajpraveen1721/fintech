@@ -28,25 +28,25 @@ const Dashboard = () => {
     };
     const transactionsData = [{
         title: "Transactions Amount",
-        value: "2,000,000",
+        value: "SAR 2,000,000",
         subtitle: "Total 13 transactions",
         color: "blue",
     },
     {
         title: "Pending Transactions",
-        value: "1,20,000",
+        value: "SAR 1,20,000",
         subtitle: "Total 78 transactions",
         color: "orange",
     },
     {
         title: "Successful Transactions",
-        value: "1,000,000",
+        value: "SAR 1,000,000",
         subtitle: "Total 134 transactions",
         color: "green",
     },
     {
         title: "Failed Transactions",
-        value: "11,000",
+        value: "SAR 11,000",
         subtitle: "Total 3 transactions",
         color: "red",
     },
