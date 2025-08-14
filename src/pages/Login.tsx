@@ -23,7 +23,7 @@ const Login = () => {
   return (
     <div className="login-container">
       <div className="login-card">
-        <h2>Login to OmnyPay</h2>
+        <h2>Login to Omnypay</h2>
         <form>
           <div className="form-group">
             <label htmlFor="username" className='form-label'>Username</label>

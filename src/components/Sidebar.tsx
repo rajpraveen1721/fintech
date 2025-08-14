@@ -29,7 +29,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
     <div className={`sidebar-overlay ${isOpen ? "open" : ""}`}>
       <div className="sidebar">
         <div className="sidebar-header">
-          <h3>OmnyPay</h3>
+          <h3>Omnypay</h3>
           <FiX className="close-icon" onClick={onClose} size={22} />
         </div>
         <ul>

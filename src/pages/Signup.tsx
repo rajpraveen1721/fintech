@@ -4,21 +4,43 @@ import { useNavigate } from "react-router-dom";
 import { authService } from "../services/AuthService";
 import signupImg from "../assets/images/signup.png";
 import { FaTrash } from "react-icons/fa";
+import Select, { components } from "react-select";
 
 const Signup = () => {
     const navigate = useNavigate();
     const [step, setStep] = useState(1);
 
     const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
-        e.preventDefault(); 
-        authService.saveUser({ username: "Mutaz", email: "Mutaz" });
+        e.preventDefault();
+        authService.saveUser({ username: "Mutaz", email: "Mutaz@gmail.com" });
         navigate("/dashboard");
     }
 
-    const handleRequestDemo =  (e: React.MouseEvent<HTMLButtonElement>) => {
-        e.preventDefault(); 
+    const handleRequestDemo = (e: React.MouseEvent<HTMLButtonElement>) => {
+        e.preventDefault();
         navigate("/contactus");
     }
+
+    const bankOptions = [
+        { value: "SNB", label: "SNB" },
+        { value: "ANB", label: "ANB" },
+        { value: "RB", label: "RB" },
+        { value: "ARB", label: "ARB" },
+        { value: "SABB", label: "SABB" }
+    ];
+
+    const Option = (props: any) => {
+        return (
+            <components.Option {...props}>
+                <input
+                    type="checkbox"
+                    checked={props.isSelected}
+                    onChange={() => null} // react-select handles state internally
+                />{" "}
+                <label>{props.label}</label>
+            </components.Option>
+        );
+    };
 
     const [files, setFiles] = useState<File[]>([]);
 
@@ -51,14 +73,14 @@ const Signup = () => {
                         </div>
                         <h2>Simplify Your Business Onboarding</h2>
                         <p>
-                            OmnyPay offers a streamlined, secure, and intuitive platform to
+                            Omnypay offers a streamlined, secure, and intuitive platform to
                             manage your business operations from day one.
                         </p>
                     </div>
 
                     {/* Right Side */}
                     <div className="signup-right">
-                    <h2>Create Your Account</h2>
+                        <h2>Create Your Account</h2>
                         <p>Enter your organization and contact details to get started.</p>
 
                         <form>
@@ -89,15 +111,16 @@ const Signup = () => {
 
                             <div className="form-group">
                                 <label className="form-label">Bank</label>
-                                <select className="form-control">
-                                    <option value="">Select your bank</option>
-                                    <option value="SNB">SNB</option>
-                                    <option value="ANB">ANB</option>
-                                    <option value="RB">RB</option>
-                                    <option value="ARB">ARB</option>
-                                </select>
+                                <Select
+                                    options={bankOptions}
+                                    isMulti
+                                    closeMenuOnSelect={false}
+                                    hideSelectedOptions={false}
+                                    components={{ Option }}
+                                    placeholder="Select bank(s)"
+                                />
                             </div>
-                            <button className="signup-button" onClick={()=> setStep(2)}>Signup</button>
+                            <button className="signup-button" onClick={() => setStep(2)}>Signup</button>
                             <button className="request-button" onClick={handleRequestDemo}>Request Demo</button>
 
                         </form>
@@ -111,13 +134,14 @@ const Signup = () => {
                     <form>
                         <div className="form-group">
                             <label className="form-label">Bank</label>
-                            <select className="form-control">
-                                <option value="">Select a bank</option>
-                                <option value="SNB">SNB</option>
-                                <option value="RB">RB</option>
-                                <option value="SABB">SABB</option>
-                                <option value="ARB">ARB</option>
-                            </select>
+                            <Select
+                                options={bankOptions}
+                                isMulti
+                                closeMenuOnSelect={false}
+                                hideSelectedOptions={false}
+                                components={{ Option }}
+                                placeholder="Select bank(s)"
+                            />
                         </div>
 
                         <div className="form-group">
@@ -170,8 +194,8 @@ const Signup = () => {
                             </select>
                         </div>
                         <div className="actions">
-                        <button className="previous-button"  onClick={()=> setStep(1)}>Previous</button>
-                        <button className="submit-button" onClick={handleSubmit}>Submit Registration</button>
+                            <button className="previous-button" onClick={() => setStep(1)}>Previous</button>
+                            <button className="submit-button" onClick={handleSubmit}>Submit Registration</button>
                         </div>
                     </form>
                 </div>

@@ -4,12 +4,41 @@ import "./Home.scss";
 import aramcoLogo from "../assets/images/aramco.png";
 import neomLogo from "../assets/images/neom.png";
 import redseaLogo from "../assets/images/redsea.png";
-import fifaLogo from "../assets/images/fifa.png";
+import fifaLogo from "../assets/images/fifa.png"
 import peopleImg from "../assets/images/people.png";
+import partnersImg from "../assets/images/partners.jpg";
+import corporateBankingImg from "../assets/images/corporate_banking.jpg"
 import { useNavigate } from "react-router-dom";
 
 /** Hook for scroll-triggered animations */
-const useInViewAnimation = (threshold: number = 0.2) => {
+// const useInViewAnimation = (threshold: number = 0.2) => {
+//   const ref = useRef<HTMLDivElement | null>(null);
+//   const [isVisible, setIsVisible] = useState(false);
+
+//   useEffect(() => {
+//     const observer = new IntersectionObserver(
+//       (entries) => {
+//         entries.forEach((entry) => {
+//           if (entry.isIntersecting) {
+//             setIsVisible(true);
+//             observer.unobserve(entry.target);
+//           }
+//         });
+//       },
+//       { threshold }
+//     );
+
+//     if (ref.current) observer.observe(ref.current);
+//     return () => {
+//       if (ref.current) observer.unobserve(ref.current);
+//     };
+//   }, [threshold]);
+
+//   return { ref, isVisible };
+// };
+
+// inside useInViewAnimation
+const useInViewAnimation = (threshold: number = 0.15) => { // lowered threshold for mobile
   const ref = useRef<HTMLDivElement | null>(null);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -23,7 +52,10 @@ const useInViewAnimation = (threshold: number = 0.2) => {
           }
         });
       },
-      { threshold }
+      {
+        threshold,
+        rootMargin: "0px 0px -50px 0px" // ensures early trigger for short screens
+      }
     );
 
     if (ref.current) observer.observe(ref.current);
@@ -101,9 +133,9 @@ const Home: React.FC = () => {
               </Dropdown.Toggle>
               <Dropdown.Menu className="custom-dropdown-menu">
                 <ul className="developer-list">
-                  <li>Resources</li>
-                  <li>API Reference</li>
                   <li>Documentation</li>
+                  <li>Development</li>
+                  <li>API Reference</li>
                   <li>Product Demos</li>
                 </ul>
               </Dropdown.Menu>
@@ -114,20 +146,18 @@ const Home: React.FC = () => {
 
             {/* Contact Button */}
             <div className="nav-actions">
-              <button className="contact-btn" onClick={()=> navigate('/contactus')}>Contact Us</button>
+              <button className="contact-btn" onClick={() => navigate('/contactus')}>Contact Us</button>
             </div>
           </div>
         </div>
 
         {/* Section 1 Content */}
-        <div className="hero-content">
+        <div className="hero-content center">
           <h1>One Bridge for All Your Corporate Banking Needs</h1>
           <p>
-            Welcome to your single destination for seamless corporate banking
-            solutions. At Banking Bridge, we understand that managing your
-            business’s financial needs requires efficiency, reliability, and
-            personalized service. That’s why we offer a comprehensive suite of
-            banking products tailored specifically for corporations of all sizes.
+
+            Welcome to your single destination for seamless corporate banking solutions. At Banking Bridge, we understand that managing your business’s financial needs requires efficiency, reliability, and personalized service. That’s why we offer a comprehensive suite of banking products tailored specifically for corporations of all sizes.
+
           </p>
         </div>
       </section>
@@ -137,15 +167,17 @@ const Home: React.FC = () => {
         ref={hero2.ref}
         className={`hero section-two ${hero2.isVisible ? "animate" : ""}`}
       >
-        <div className="hero-content">
-          <h2>Our Expertise in Corporate Banking</h2>
-          <p>
-            Whether you need cash management, business loans, trade finance, or
-            treasury services, our expert team is here to bridge the gap between
-            your ambitions and financial goals. With cutting-edge technology and
-            dedicated support, we simplify complex transactions so you can focus
-            on what matters most—growing your business.
-          </p>
+        <div className="hero-layout">
+          <div className="image-placeholder">
+            <img src={corporateBankingImg} alt="Corporate Banking" />
+          </div>
+          <div className="text-content left">
+            <h2>Our Expertise in Corporate Banking</h2>
+            <p>
+              Whether you need cash management, business loans, trade finance, or treasury services, our expert team is here to bridge the gap between your ambitions and financial goals. With cutting-edge technology and dedicated support, we simplify
+              complex transactions so you can focus on what matters most—growing your business.
+            </p>
+          </div>
         </div>
       </section>
 
@@ -154,14 +186,18 @@ const Home: React.FC = () => {
         ref={hero3.ref}
         className={`hero section-three ${hero3.isVisible ? "animate" : ""}`}
       >
-        <div className="hero-content">
-          <h2>Your Trusted Financial Partner</h2>
-          <p>
-            Experience the convenience and confidence of having one trusted
-            partner for all your corporate banking needs. Connect with us today
-            and discover how we can help accelerate your company’s success.
-          </p>
-          <button className="cta-btn hover-glow">Connect With Us</button>
+        <div className="hero-layout reverse">
+          <div className="image-placeholder">
+            <img src={partnersImg} alt="Partners" />
+          </div>
+          <div className="text-content right">
+            <h2>Your Trusted Financial Partner</h2>
+            <p>
+              Experience the convenience and confidence of having one trusted partner for all your corporate banking
+              needs. Connect with us today and discover how we can help accelerate your company’s success.
+            </p>
+            <button className="cta-btn hover-glow">Connect With Us</button>
+          </div>
         </div>
       </section>
 

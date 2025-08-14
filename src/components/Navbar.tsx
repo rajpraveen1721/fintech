@@ -47,7 +47,7 @@ const Navbar = () => {
             />
           )}
           <div className="navbar-logo" onClick={() => navigate("/")}>
-            OmnyPay
+            Omnypay
           </div>
         </div>
 
