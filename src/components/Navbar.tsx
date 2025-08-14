@@ -4,6 +4,7 @@ import { FiLogOut, FiMenu } from "react-icons/fi";
 import "./Navbar.scss";
 import { authService } from "../services/AuthService";
 import Sidebar from "./Sidebar";
+import logo from "../assets/images/logo.png";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -46,9 +47,7 @@ const Navbar = () => {
               onClick={() => setSidebarOpen(true)}
             />
           )}
-          <div className="navbar-logo" onClick={() => navigate("/")}>
-            Omnypay
-          </div>
+          <img src={logo} alt="Logo"  className="navbar-logo" onClick={() => navigate("/")}/>
         </div>
 
         <div className="navbar-actions">

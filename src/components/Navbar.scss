@@ -20,9 +20,7 @@
     }
 
     .navbar-logo {
-      font-size: 1.25rem;
-      font-weight: bold;
-      cursor: pointer;
+      width: 125px;
     }
   }
 
@@ -47,8 +45,9 @@
       transition: all 0.3s ease;
 
       &:hover {
-        background: white;
-        color: black;
+        background: #ffffff;
+        color: #009999;
+        border: 1px solid #009999;
       }
     }
   }
@@ -128,9 +127,6 @@
 /* Small Mobile */
 @media (max-width: 576px) {
   .navbar {
-    .navbar-logo {
-      font-size: 1.1rem;
-    }
 
     .profile-container {
       .profile-dropdown {
