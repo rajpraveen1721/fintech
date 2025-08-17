@@ -59,7 +59,7 @@ const Dashboard = () => {
     return (
         <div className="dashboard">
             <div className="dashboard-header">
-                <h2>Welcome, Super User!</h2>
+                <h2>Welcome, Mutaz!</h2>
                 <div className="header-actions">
                     <input
                         type="text"
