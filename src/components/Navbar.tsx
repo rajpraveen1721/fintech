@@ -1,16 +1,16 @@
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { FiLogOut, FiMenu } from "react-icons/fi";
+import { FiLogOut, FiUser, FiSettings } from "react-icons/fi";
 import "./Navbar.scss";
 import { authService } from "../services/AuthService";
 import Sidebar from "./Sidebar";
 import logo from "../assets/images/logo.png";
 
+import { Dropdown } from "react-bootstrap";
+
 const Navbar = () => {
   const navigate = useNavigate();
-  const [showMenu, setShowMenu] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
 
   const user = authService.getUser();
 
@@ -19,56 +19,61 @@ const Navbar = () => {
     navigate("/");
   };
 
-   // Close dropdown on outside click
-   useEffect(() => {
-    function handleClickOutside(event: MouseEvent) {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setShowMenu(false);
-      }
-    }
-    if (showMenu) {
-      document.addEventListener("mousedown", handleClickOutside);
-    } else {
-      document.removeEventListener("mousedown", handleClickOutside);
-    }
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [showMenu]);
-
   return (
     <>
       <nav className="navbar">
         <div className="navbar-left">
           {user && (
-            <FiMenu
-              size={22}
+            <span
               className="hamburger-icon"
               onClick={() => setSidebarOpen(true)}
-            />
+            >
+              ☰
+            </span>
           )}
-          <img src={logo} alt="Logo"  className="navbar-logo" onClick={() => navigate("/")}/>
+          <img
+            src={logo}
+            alt="Logo"
+            className="navbar-logo"
+            onClick={() => navigate("/")}
+          />
         </div>
 
         <div className="navbar-actions">
           {user ? (
-            <div className="profile-container" ref={dropdownRef}>
-              <div
-                className="profile-icon"
-                onClick={() => setShowMenu((prev) => !prev)}
-              >
-                {user.username[0].toUpperCase()}
-              </div>
+            <div className="profile-container">
+              <Dropdown align="end">
+                <Dropdown.Toggle className="profile-toggle">
+                  <FiUser size={28} />
+                </Dropdown.Toggle>
 
-              {showMenu && (
-                <div className="profile-dropdown">
-                  <p>{user.username}</p>
-                  <p>{user.email}</p>
-                  <button onClick={handleLogout}>
-                    <FiLogOut size={16} className="logout-icon" /> Logout
-                  </button>
-                </div>
-              )}
+                <Dropdown.Menu className="profile-dropdown">
+                  {/* Profile Info */}
+                  <div className="profile-info">
+                    <p className="username">{user.username}</p>
+                    <p className="role">Product Manager</p>
+                    <p className="email">{user.email}</p>
+                  </div>
+                  <Dropdown.Divider />
+
+                  {/* My Account */}
+                  <Dropdown.Item onClick={() => navigate("/account")}>
+                    <FiUser className="dropdown-icon" color="#009999" /> My
+                    Account
+                  </Dropdown.Item>
+
+                  {/* Settings */}
+                  <Dropdown.Item onClick={() => navigate("/settings")}>
+                    <FiSettings className="dropdown-icon" color="#009999" />{" "}
+                     Settings
+                  </Dropdown.Item>
+
+                  {/* Logout */}
+                  <Dropdown.Item onClick={handleLogout} className="logout">
+                    <FiLogOut className="dropdown-icon" color="red" /> Logout
+                  </Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
             </div>
           ) : (
             <div className="auth-buttons">

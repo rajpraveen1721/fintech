@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  // background: #f8f9fc;
   padding: 2rem;
   min-height: calc(100vh - 80px);
 
@@ -14,6 +13,14 @@
     .title {
       font-weight: 600;
       color: #fff;
+    }
+  }
+
+  .ibans-count{
+    color: #009999;
+    cursor: pointer;
+    &:hover,:focus {
+      text-decoration: underline;
     }
   }
 }
@@ -78,6 +85,14 @@
       @media (max-width: 480px) {
         width: 40%;
       }
+    }
+  }
+
+  //IBANS pop styles
+  .iban-account-list {
+    .accounts{
+      font-size: 14px;
+      font-weight: 500;
     }
   }
 }

@@ -12,13 +12,13 @@ const Signup = () => {
 
     const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
-        authService.saveUser({ username: "Mutaz", email: "Mutaz@gmail.com" });
+        authService.saveUser({ username: "Mutaz", email: "mutaz@omnypay.com" });
         navigate("/dashboard");
     }
 
     const handleRequestDemo = (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
-        navigate("/contactus");
+        navigate("/request-demo");
     }
 
     const bankOptions = [

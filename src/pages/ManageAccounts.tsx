@@ -12,17 +12,38 @@ interface Account {
     accountNumber: string;
     currency: string;
     ibans: number;
+    ibansAccounts: string[],
     accountUsage: string;
 }
 
 const ManageAccounts = () => {
     const [showModal, setShowModal] = useState(false);
     const [accounts, setAccounts] = useState<Account[]>([
-        { id: 1, bank: "Saudi National Bank (SNB)", accountType: "Savings Account", accountNumber: "7845792345", currency: "SAR", ibans: 10, accountUsage: "Payroll, Payables" },
-        { id: 2, bank: "Al Rajhi Bank", accountType: "Current Account", accountNumber: "1234567890", currency: "USD", ibans: 20, accountUsage: "Payables" },
-        { id: 3, bank: "Saudi Arabian Bank (SAB)", accountType: "Business Account", accountNumber: "1246791234", currency: "SAR", ibans: 30, accountUsage: "Receivables, Payroll" },
-        { id: 4, bank: "Riyad Bank", accountType: "Savings Account", accountNumber: "9876543210", currency: "SAR", ibans: 15, accountUsage: "Payables" },
-        { id: 5, bank: "Saudi Investment Bank", accountType: "Current Account", accountNumber: "5432109876", currency: "USD", ibans: 25, accountUsage: "Payroll" },
+        {
+            id: 1, bank: "Saudi National Bank", accountType: "Savings Account", accountNumber: "7845792345", currency: "SAR", ibans: 5,
+            ibansAccounts: ["94661240", "51154934", "58770333", "62995658", "25081357"],
+            accountUsage: "Payroll, Payables"
+        },
+        {
+            id: 2, bank: "Al Rajhi Bank", accountType: "Current Account", accountNumber: "1234567890", currency: "USD", ibans: 10,
+            ibansAccounts: ["05668731", "61994718", "31186149", "94052980", "51029798", "94661240", "51154934", "58770333", "62995658", "25081357"],
+            accountUsage: "Payables"
+        },
+        {
+            id: 3, bank: "Saudi Arabian Bank", accountType: "Business Account", accountNumber: "1246791234", currency: "SAR", ibans: 8,
+            ibansAccounts: ["43970712", "37310647", "51029798", "94661240", "51154934", "58770333", "62995658", "25081357"],
+            accountUsage: "Receivables, Payroll"
+        },
+        {
+            id: 4, bank: "Riyad Bank", accountType: "Savings Account", accountNumber: "9876543210", currency: "SAR", ibans: 7,
+            ibansAccounts: ["25081357", "37310647", "51029798", "94661240", "51154934", "58770333", "62995658"],
+            accountUsage: "Payables"
+        },
+        {
+            id: 5, bank: "Saudi Investment Bank", accountType: "Current Account", accountNumber: "5432109876", currency: "USD", ibans: 6,
+            ibansAccounts: ["24886601", "70773471", "51154934", "58770333", "62995658", "25081357",],
+            accountUsage: "Payroll"
+        },
     ]);
 
     const handleDelete = (id: number) => {
@@ -34,7 +55,17 @@ const ManageAccounts = () => {
         { field: "accountType", headerName: "Account Type", flex: 1 },
         { field: "accountNumber", headerName: "Account Number", flex: 1 },
         { field: "currency", headerName: "Currency", flex: 0.5 },
-        { field: "ibans", headerName: "IBANS Associated", flex: 0.7 },
+        {
+            field: "ibans", headerName: "IBANS Associated", flex: 0.7,
+            renderCell: (params) => (
+                <span
+                    className="ibans-count"
+                    onClick={() => handleShowIbans(params.row.ibansAccounts)}
+                >
+                    {params.value}
+                </span>
+            ),
+        },
         { field: "accountUsage", headerName: "Account Usage", flex: 1 },
         {
             field: "actions",
@@ -49,6 +80,15 @@ const ManageAccounts = () => {
             ),
         },
     ];
+
+    const [ibanModalOpen, setIbanModalOpen] = useState(false);
+    const [selectedIbans, setSelectedIbans] = useState<string[]>([]);
+
+    const handleShowIbans = (ibansAccounts: string[]) => {
+        setSelectedIbans(ibansAccounts);
+        setIbanModalOpen(true);
+    };
+
 
     const [ibanFiles, setIbanFiles] = useState<File[]>([]);
 
@@ -103,6 +143,27 @@ const ManageAccounts = () => {
                 </div>
             </div>
 
+            {/* IBAN List Modal */}
+            <Modal
+                show={ibanModalOpen}
+                onHide={() => setIbanModalOpen(false)}
+                centered
+                size="sm"
+                dialogClassName="custom-dialog-container"
+            >
+                <Modal.Header closeButton>
+                    <Modal.Title>IBAN Accounts</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <div className="iban-account-list">
+                        <p className="accounts">{selectedIbans.join(", ")}</p>
+                    </div>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="light" className="btn-save" onClick={() => setIbanModalOpen(false)}>Close</Button>
+                </Modal.Footer>
+            </Modal>
+
             {/* Modal for Creating/Editing Account */}
             <Modal show={showModal} onHide={() => setShowModal(false)}
                 size="lg"
@@ -118,7 +179,7 @@ const ManageAccounts = () => {
                             <Col md={6}>
                                 <Form.Group>
                                     <Form.Label>
-                                        Bank  <span style={{ color: "red" }}>*</span> 
+                                        Bank  <span style={{ color: "red" }}>*</span>
                                     </Form.Label>
                                     <Form.Select>
                                         <option>Select a bank</option>

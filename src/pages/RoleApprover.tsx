@@ -5,39 +5,6 @@ import { Button, Modal } from "react-bootstrap";
 import { TextField } from "@mui/material";
 import { DataGrid, GridToolbar, type GridColDef } from "@mui/x-data-grid";
 
-const MoreItemsPopup = ({ items }: { items: string[] }) => (
-    <div className="more-items-popup">
-        {items.map((item, i) => (
-            <div key={i}>{item}</div>
-        ))}
-    </div>
-);
-
-const ChipRenderer = (props: any) => {
-    const maxVisible = 3;
-    const items = props.value || [];
-    const visibleItems = items.slice(0, maxVisible);
-    const hiddenCount = items.length - maxVisible;
-    const [showPopup, setShowPopup] = React.useState(false);
-
-    return (
-        <div className="chip-container">
-            {visibleItems.map((item: string, i: number) => (
-                <span key={i} className="chip">{item}</span>
-            ))}
-            {hiddenCount > 0 && (
-                <span
-                    className="chip-more"
-                    onClick={() => setShowPopup(!showPopup)}
-                >
-                    +{hiddenCount} more
-                </span>
-            )}
-            {showPopup && <MoreItemsPopup items={items} />}
-        </div>
-    );
-};
-
 interface User {
     id: number,
     user: string;
@@ -46,6 +13,43 @@ interface User {
     services: string[];
 }
 
+const RenderExpandableList = ({
+    values,
+    rowId,
+    expandedRow,
+    setExpandedRow,
+}: {
+    values: string[];
+    rowId: string | number;
+    expandedRow: string | number | null;
+    setExpandedRow: React.Dispatch<React.SetStateAction<string | number | null>>;
+}) => {
+    const id = Number(rowId);
+    const isExpanded = expandedRow === id;
+    const display = isExpanded ? values : values.slice(0, 2);
+
+    const toggleExpand = () => {
+        setExpandedRow(isExpanded ? null : rowId);
+    };
+
+    return (
+        <div className={`expandable-list ${isExpanded ? 'py-2' : ''}`}>
+            {display.map((val, i) => (
+                <span key={i} className="expandable-item">
+                    {val}
+                    {i < display.length - 1 && <span className="comma">,</span>}
+                </span>
+            ))}
+            {values.length > 2 && (
+                <button className="toggle-btn" onClick={toggleExpand}>
+                    {isExpanded ? "Show Less" : `+${values.length - 2} more`}
+                </button>
+            )}
+        </div>
+    );
+};
+
+
 const RoleApprover = () => {
 
     const [showModal, setShowModal] = useState(false);
@@ -53,9 +57,9 @@ const RoleApprover = () => {
     const [users, setUsers] = useState<User[]>([
         {
             id: 1,
-            user: "mutaz@xxx.gmail.com",
+            user: "mutaz@omnypay.com",
             department: "Finance",
-            accounts: ["AC001", "AC002", "AC003", "AC004", "AC005", "AC006", "AC007"],
+            accounts: ["97901391", "40076967", "57905895", "97640298", "55945308", "39087224", "55896230"],
             services: [
                 "Payments",
                 "Loans",
@@ -68,9 +72,9 @@ const RoleApprover = () => {
         },
         {
             id: 2,
-            user: "sultan@xxx@gmail.com",
+            user: "sultan@omnypay.com",
             department: "Operations",
-            accounts: ["AC101", "AC102"],
+            accounts: ["04998304", "04063950"],
             services: ["Payments", "Loans", "Forex", "Cards", "Wealth Management"]
         }
     ]);
@@ -79,16 +83,26 @@ const RoleApprover = () => {
         { headerName: "User", field: "user", flex: 1 },
         { headerName: "Department", field: "department", flex: 1 },
         {
-            headerName: "Accounts",
-            field: "accounts",
-            renderCell: ChipRenderer,
-            flex: 1
+            field: "accounts", headerName: "Accounts", flex: 1,
+            renderCell: (params) => (
+                <RenderExpandableList
+                    values={params.value}
+                    rowId={params.id}
+                    expandedRow={expandedRow}
+                    setExpandedRow={setExpandedRow}
+                />
+            )
         },
         {
-            headerName: "Services",
-            field: "services",
-            renderCell: ChipRenderer,
-            flex: 1
+            field: "services", headerName: "Services", flex: 1,
+            renderCell: (params) => (
+                <RenderExpandableList
+                    values={params.value}
+                    rowId={params.id}
+                    expandedRow={expandedRow}
+                    setExpandedRow={setExpandedRow}
+                />
+            )
         },
         {
             field: "actions",
@@ -103,6 +117,13 @@ const RoleApprover = () => {
             )
         }
     ];
+
+    // Only one expanded row at a time
+    const [expandedRow, setExpandedRow] = useState<string | number | null>(null);
+
+    const getRowHeight = (params: any) => {
+        return expandedRow === params.id ? "auto" : 40;
+    };
 
     const handleDelete = (id: number) => {
         setUsers(users.filter((user: any) => user.id !== id));
@@ -192,6 +213,7 @@ const RoleApprover = () => {
                             rows={users}
                             autoHeight
                             rowHeight={40}
+                            getRowHeight={getRowHeight}
                             className="data-grid"
                             disableRowSelectionOnClick
                             slots={{ toolbar: GridToolbar }}

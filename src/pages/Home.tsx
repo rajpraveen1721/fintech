@@ -221,7 +221,7 @@ const Home: React.FC = () => {
         <div className="team-members">
           {[
             { name: "Renga M", quote: "This platform transformed our payment processing!" },
-            { name: "Faisal", quote: "The API integration was seamless and fast." },
+            { name: "Salman", quote: "The API integration was seamless and fast." },
             { name: "Sarah K", quote: "Highly recommend for any fintech startup." },
           ].map((member, i) => (
             <div key={i} className="member hover-tilt">

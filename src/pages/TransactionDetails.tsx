@@ -18,10 +18,10 @@ const pendingColumns: GridColDef[] = [
 ];
 
 const pendingRows = [
-    { id: 1, transactionId: 'TXN001', bu: 'BU-A', bank: 'Global Bank', account: 'ACC12345', amount: 'SAR 1,250.00', date: '2024-07-25', type: 'Payroll', status: 'Pending' },
-    { id: 2, transactionId: 'TXN002', bu: 'BU-B', bank: 'Regional Corp', account: 'ACC67890', amount: 'SAR 75.50', date: '2024-07-24', type: 'Expense Claim', status: 'Pending' },
-    { id: 3, transactionId: 'TXN003', bu: 'BU-C', bank: 'City Trust', account: 'ACC11223', amount: 'SAR 3,200.00', date: '2024-07-23', type: 'Vendor Payment', status: 'Pending' },
-    { id: 4, transactionId: 'TXN004', bu: 'BU-A', bank: 'Global Bank', account: 'ACC44556', amount: 'SAR 180.00', date: '2024-07-22', type: 'Refund', status: 'Pending' },
+    { id: 1, transactionId: 'TXN001', bu: 'Finance', bank: 'Saudi National Bank', account: 'ACC12345', amount: 'SAR 1,250.00', date: '2024-07-25', type: 'Payroll', status: 'Pending' },
+    { id: 2, transactionId: 'TXN002', bu: 'Sales', bank: 'Arab National Bank', account: 'ACC67890', amount: 'SAR 75.50', date: '2024-07-24', type: 'Expense Claim', status: 'Pending' },
+    { id: 3, transactionId: 'TXN003', bu: 'HR', bank: 'Riyad Bank', account: 'ACC11223', amount: 'SAR 3,200.00', date: '2024-07-23', type: 'Vendor Payment', status: 'Pending' },
+    { id: 4, transactionId: 'TXN004', bu: 'Operations', bank: 'Al Rajhi Bank', account: 'ACC44556', amount: 'SAR 180.00', date: '2024-07-22', type: 'Refund', status: 'Pending' },
 ];
 
 const historyColumns: GridColDef[] = [
@@ -45,12 +45,12 @@ const historyColumns: GridColDef[] = [
 ];
 
 const historyRows = [
-    { id: 1, transactionId: 'TXN998', bu: 'BU-A', bank: 'Global Bank', description: 'Inv-2024-001', account: 'ACC12345', amount: 'SAR 500.00', date: '2024-07-20', type: 'Invoice', status: 'Completed' },
-    { id: 2, transactionId: 'TXN997', bu: 'BU-B', bank: 'Regional Corp', description: 'Loan-Repay-005', account: 'ACC67890', amount: 'SAR 250.00', date: '2024-07-19', type: 'Loan Repayment', status: 'Completed' },
-    { id: 3, transactionId: 'TXN996', bu: 'BU-C', bank: 'City Trust', description: 'Sal-July-2024', account: 'ACC11223', amount: 'SAR 4,500.00', date: '2024-07-18', type: 'Salary', status: 'Completed' },
-    { id: 4, transactionId: 'TXN995', bu: 'BU-A', bank: 'Global Bank', description: 'Tax-Q2-2024', account: 'ACC44556', amount: 'SAR 1,200.00', date: '2024-07-17', type: 'Tax Payment', status: 'Failed' },
-    { id: 5, transactionId: 'TXN994', bu: 'BU-B', bank: 'Regional Corp', description: 'Utility-Bill', account: 'ACC77889', amount: 'SAR 120.00', date: '2024-07-16', type: 'Bill Payment', status: 'Completed' },
-    { id: 6, transactionId: 'TXN993', bu: 'BU-C', bank: 'City Trust', description: 'Subscription-001', account: 'ACC22334', amount: 'SAR 15.00', date: '2024-07-15', type: 'Subscription', status: 'Error' },
+    { id: 1, transactionId: 'TXN998', bu: 'Sales', bank: 'Saudi National Bank', description: 'Inv-2024-001', account: 'ACC12345', amount: 'SAR 500.00', date: '2024-07-20', type: 'Invoice', status: 'Completed' },
+    { id: 2, transactionId: 'TXN997', bu: 'Marketing', bank: 'Arab National Bank', description: 'Loan-Repay-005', account: 'ACC67890', amount: 'SAR 250.00', date: '2024-07-19', type: 'Loan Repayment', status: 'Completed' },
+    { id: 3, transactionId: 'TXN996', bu: 'Finance', bank: 'Riyad Bank', description: 'Sal-July-2024', account: 'ACC11223', amount: 'SAR 4,500.00', date: '2024-07-18', type: 'Salary', status: 'Completed' },
+    { id: 4, transactionId: 'TXN995', bu: 'Operations', bank: 'Saudi Investment Bank', description: 'Tax-Q2-2024', account: 'ACC44556', amount: 'SAR 1,200.00', date: '2024-07-17', type: 'Tax Payment', status: 'Failed' },
+    { id: 5, transactionId: 'TXN994', bu: 'HR', bank: 'Bank AlJazira', description: 'Utility-Bill', account: 'ACC77889', amount: 'SAR 120.00', date: '2024-07-16', type: 'Bill Payment', status: 'Completed' },
+    { id: 6, transactionId: 'TXN993', bu: 'Accounts', bank: 'Al Rajhi Bank', description: 'Subscription-001', account: 'ACC22334', amount: 'SAR 15.00', date: '2024-07-15', type: 'Subscription', status: 'Error' },
 ];
 
 const TransactionDetails = () => {

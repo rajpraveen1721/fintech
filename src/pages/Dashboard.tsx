@@ -26,6 +26,17 @@ const Dashboard = () => {
             { label: "SABB", data: [0.9, 1.2, 1.1, 1.4, 1.3, 1.6], borderColor: "#4B5563", fill: false }
         ]
     };
+
+    // Exchange Rate Chart
+    const exchangeRateData = {
+        labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
+        datasets: [
+            { label: "USD/SAR", data: [3.75, 3.76, 3.75, 3.77, 3.76, 3.75], borderColor: "#10B981", fill: false },
+            { label: "EUR/SAR", data: [4.05, 4.08, 4.12, 4.15, 4.10, 4.18], borderColor: "#EF4444", fill: false },
+            { label: "GBP/SAR", data: [4.60, 4.62, 4.65, 4.70, 4.68, 4.72], borderColor: "#6366F1", fill: false },
+        ],
+    };
+
     const transactionsData = [{
         title: "Transactions Amount",
         value: "SAR 2,000,000",
@@ -81,7 +92,7 @@ const Dashboard = () => {
             </div>
             {/* Transaction Summary Cards */}
             <div className="transaction-details-container">
-                {transactionsData.map((transaction: any, index:any) =>
+                {transactionsData.map((transaction: any, index: any) =>
                     <div className={`transaction-card ${transaction.color}`} key={index}>
                         <h4>{transaction.title}</h4>
                         <h2>{transaction.value}</h2>
@@ -92,12 +103,30 @@ const Dashboard = () => {
             {/* Charts Section */}
             <div className="charts-section-container">
                 <div className="chart-card">
-                    <h3>Account Balances</h3>
+                    <h4>Account Balances</h4>
                     <Bar data={balanceChartData} options={{ responsive: true, plugins: { legend: { display: false } } }} />
                 </div>
                 <div className="chart-card">
-                    <h3>Transaction Metrics</h3>
-                    <Line data={lineChartData} options={{ responsive: true }} />
+                    <h4>Transaction Metrics</h4>
+                    <Line data={lineChartData} options={{ 
+                        responsive: true ,
+                        plugins: {
+                                legend: { position: "bottom" },
+                            }
+                        }} />
+                </div>
+                <div className="chart-card">
+                    <h4>Exchange Rate Trends</h4>
+                    <Line
+                        data={exchangeRateData}
+                        options={{
+                            responsive: true,
+                            plugins: {
+                                legend: { position: "bottom" },
+                            },
+                            elements: { point: { radius: 4 } },
+                        }}
+                    />
                 </div>
             </div>
 

@@ -11,7 +11,7 @@ const RequestDemo = () => {
                     Our sales team will reach you soon!
                 </p>
                 <p className="email-note">
-                    For Immediate inquiries, please write your to <a href="mailto:support@bankingbridge.com">support@bankingbridge.com</a>
+                    For Immediate inquiries, please write your to <a href="mailto:support@omnypay.com">support@bankingbridge.com</a>
                 </p>
                 <button className="back-button" onClick={() => navigate("/")}>
                     ← Back to Home

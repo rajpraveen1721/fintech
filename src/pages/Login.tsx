@@ -8,7 +8,7 @@ const Login = () => {
 
   const handleLogin = (e: React.MouseEvent<HTMLButtonElement>) => {
      e.preventDefault(); 
-    authService.saveUser({ username: "Mutaz", email: "Mutaz@gmail.com" });
+    authService.saveUser({ username: "Mutaz", email: "mutaz@omnypay.com" });
     navigate("/dashboard");
   }
 
