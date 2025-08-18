@@ -105,7 +105,6 @@ const Home: React.FC = () => {
         <div className="home-navbar fade-down">
           <div className="nav-content" ref={dropdownRef}>
             {/* Products Dropdown */}
-
             <Dropdown
               show={activeDropdown === "products"}
               onMouseEnter={() => setActiveDropdown("products")}
@@ -157,8 +156,34 @@ const Home: React.FC = () => {
                 <ul className="developer-list">
                   <li>Documentation</li>
                   <li>Development</li>
+                  <li>Libraries</li>
                   <li>API Reference</li>
                   <li>Product Demos</li>
+                </ul>
+              </Dropdown.Menu>
+            </Dropdown>
+
+            {/* Resources Dropdown */}
+            <Dropdown
+              show={activeDropdown === "resources"}
+              onMouseEnter={() => setActiveDropdown("resources")}
+              onMouseLeave={() => { }}
+            >
+              <Dropdown.Toggle
+                variant="link"
+                id="dropdown-resources"
+                className={`nav-dropdown-toggle ${activeDropdown === "resources" ? "show" : ""}`}
+                onClick={() => setActiveDropdown(activeDropdown === "resources" ? null : "resources")}
+              >
+                Resources <FaChevronDown className="dropdown-arrow" />
+              </Dropdown.Toggle>
+              <Dropdown.Menu className="custom-dropdown-menu dropdown-animate">
+                <ul className="resources-list">
+                  <li>Blog</li>
+                  <li>Library</li>
+                  <li>Industry Resources</li>
+                  <li>Customer Stories</li>
+                  <li>Annual Conference</li>
                 </ul>
               </Dropdown.Menu>
             </Dropdown>
