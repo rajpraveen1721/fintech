@@ -262,7 +262,7 @@ const Home: React.FC = () => {
                 <img src={peopleImg} alt="Founder 2" />
               </div>
               <h5 className="profile-name">Sultan al onizi</h5>
-              <p className="profile-role">Co-Founder & CTO</p>
+              <p className="profile-role">Co-Founder & CEO</p>
               <p className="profile-desc">
                 Over two decades of experience in the banking sector and played a key role in KSA fintech vision 2030.
               </p>
@@ -288,7 +288,7 @@ const Home: React.FC = () => {
                 <img src={teamImg} alt="Team Member 1" />
               </div>
               <h5 className="profile-name">Renga M</h5>
-              <p className="profile-role">Head of Product</p>
+              <p className="profile-role">Product Manager</p>
               <p className="profile-desc">
                 “Our commitment to client-centric solutions drives every product
                 innovation, ensuring seamless and reliable banking experiences.”
@@ -300,7 +300,7 @@ const Home: React.FC = () => {
                 <img src={teamImg} alt="Team Member 2" />
               </div>
               <h5 className="profile-name">Salman</h5>
-              <p className="profile-role">Lead Architect</p>
+              <p className="profile-role">Product Owner</p>
               <p className="profile-desc">
                 “Building robust and secure financial infrastructures is not
                 just our job; it is our passion, pushing the product forward.”
@@ -312,7 +312,7 @@ const Home: React.FC = () => {
                 <img src={teamImg} alt="Team Member 3" />
               </div>
               <h5 className="profile-name">Sarah K</h5>
-              <p className="profile-role">Client Relations Manager</p>
+              <p className="profile-role">Business analyst</p>
               <p className="profile-desc">
                 “We prioritize understanding our clients’ evolving challenges to
                 deliver personalized banking solutions that foster long-term
