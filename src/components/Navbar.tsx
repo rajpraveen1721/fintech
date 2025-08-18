@@ -77,8 +77,8 @@ const Navbar = () => {
             </div>
           ) : (
             <div className="auth-buttons">
-              <button onClick={() => navigate("/login")}>Login</button>
-              <button onClick={() => navigate("/signup")}>Signup</button>
+              <button onClick={() => navigate("/login")} className="login-btn">Login</button>
+              <button onClick={() => navigate("/signup")} className="signup-btn">Signup</button>
             </div>
           )}
         </div>

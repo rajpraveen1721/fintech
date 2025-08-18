@@ -120,7 +120,7 @@ const Signup = () => {
                                     placeholder="Select bank(s)"
                                 />
                             </div>
-                            <button className="signup-button" onClick={() => setStep(2)}>Signup</button>
+                            <button className="signup-button" onClick={() => setStep(2)}>Submit Registration</button>
                             <button className="request-button" onClick={handleRequestDemo}>Request Demo</button>
 
                         </form>
@@ -195,7 +195,7 @@ const Signup = () => {
                         </div>
                         <div className="actions">
                             <button className="previous-button" onClick={() => setStep(1)}>Previous</button>
-                            <button className="submit-button" onClick={handleSubmit}>Submit Registration</button>
+                            <button className="submit-button" onClick={handleSubmit}>Signup</button>
                         </div>
                     </form>
                 </div>

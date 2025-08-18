@@ -7,8 +7,10 @@ import redseaLogo from "../assets/images/redsea.png";
 import fifaLogo from "../assets/images/fifa.png"
 import peopleImg from "../assets/images/people.png";
 import partnersImg from "../assets/images/partners.jpg";
+import teamImg from "../assets/images/team.jpg";
 import corporateBankingImg from "../assets/images/corporate_banking.jpg"
 import { useNavigate } from "react-router-dom";
+import { FaChevronDown, FaFacebookF, FaLinkedin, FaTwitter } from "react-icons/fa";
 
 /** Hook for scroll-triggered animations */
 // const useInViewAnimation = (threshold: number = 0.2) => {
@@ -76,6 +78,22 @@ const Home: React.FC = () => {
   const founders = useInViewAnimation();
   const navigate = useNavigate();
 
+const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+const dropdownRef = useRef<HTMLDivElement | null>(null);
+
+// Close dropdown when clicking outside
+useEffect(() => {
+  const handleClickOutside = (event: MouseEvent) => {
+    if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+      setActiveDropdown(null);
+    }
+  };
+  document.addEventListener("mousedown", handleClickOutside);
+  return () => {
+    document.removeEventListener("mousedown", handleClickOutside);
+  };
+}, []);
+
   return (
     <div className="home">
       {/* Hero Section 1 with Navbar */}
@@ -83,30 +101,29 @@ const Home: React.FC = () => {
         ref={hero1.ref}
         className={`hero section-one ${hero1.isVisible ? "animate" : ""}`}
       >
-        <div className="overlay"></div>
         {/* Navbar */}
         <div className="home-navbar fade-down">
-          <div className="nav-content">
+          <div className="nav-content" ref={dropdownRef}>
             {/* Products Dropdown */}
-            <Dropdown>
-              <Dropdown.Toggle
-                variant="link"
-                id="dropdown-products"
-                className="nav-dropdown-toggle"
-              >
-                Products
+
+            <Dropdown
+    show={activeDropdown === "products"}
+    onMouseEnter={() => setActiveDropdown("products")}
+    onMouseLeave={() => {}}
+  >
+    <Dropdown.Toggle
+      variant="link"
+      id="dropdown-products"
+      className={`nav-dropdown-toggle ${activeDropdown === "products" ? "show" : ""}`}
+      onClick={() => setActiveDropdown(activeDropdown === "products" ? null : "products")}
+    >
+                Products <FaChevronDown className="dropdown-arrow" />
               </Dropdown.Toggle>
-              <Dropdown.Menu className="custom-dropdown-menu">
+              <Dropdown.Menu className="custom-dropdown-menu dropdown-animate">
                 <ul className="product-list">
                   <li>OLP</li>
                   <li>Bulk OLP</li>
-                  <li>
-                    SADAD
-                    {/* <ul>
-                      <li>Utility</li>
-                      <li>Gov</li>
-                    </ul> */}
-                  </li>
+                  <li>SADAD</li>
                   <li>Treasury Exchange Rate</li>
                   <li>Account Balance</li>
                   <li>Account Credit Notification</li>
@@ -123,15 +140,20 @@ const Home: React.FC = () => {
             </Dropdown>
 
             {/* Developers Dropdown */}
-            <Dropdown>
-              <Dropdown.Toggle
-                variant="link"
-                id="dropdown-developers"
-                className="nav-dropdown-toggle"
-              >
-                Developers
+            <Dropdown
+    show={activeDropdown === "developers"}
+    onMouseEnter={() => setActiveDropdown("developers")}
+    onMouseLeave={() => {}}
+  >
+    <Dropdown.Toggle
+      variant="link"
+      id="dropdown-developers"
+      className={`nav-dropdown-toggle ${activeDropdown === "developers" ? "show" : ""}`}
+      onClick={() => setActiveDropdown(activeDropdown === "developers" ? null : "developers")}
+    >
+                Developers <FaChevronDown className="dropdown-arrow" />
               </Dropdown.Toggle>
-              <Dropdown.Menu className="custom-dropdown-menu">
+              <Dropdown.Menu className="custom-dropdown-menu dropdown-animate">
                 <ul className="developer-list">
                   <li>Documentation</li>
                   <li>Development</li>
@@ -155,9 +177,7 @@ const Home: React.FC = () => {
         <div className="hero-content center">
           <h1>One Bridge for All Your Corporate Banking Needs</h1>
           <p>
-
             Welcome to your single destination for seamless corporate banking solutions. At Banking Bridge, we understand that managing your business’s financial needs requires efficiency, reliability, and personalized service. That’s why we offer a comprehensive suite of banking products tailored specifically for corporations of all sizes.
-
           </p>
         </div>
       </section>
@@ -196,7 +216,7 @@ const Home: React.FC = () => {
               Experience the convenience and confidence of having one trusted partner for all your corporate banking
               needs. Connect with us today and discover how we can help accelerate your company’s success.
             </p>
-            <button className="cta-btn hover-glow">Connect With Us</button>
+            <button className="cta-btn hover-glow" onClick={() => navigate('/request-demo')}>Request Demo</button>
           </div>
         </div>
       </section>
@@ -215,41 +235,110 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* Team */}
-      <section ref={team.ref} className={`team ${team.isVisible ? "animate" : ""}`}>
-        <h2>Meet Our Team</h2>
-        <div className="team-members">
-          {[
-            { name: "Renga M", quote: "This platform transformed our payment processing!" },
-            { name: "Salman", quote: "The API integration was seamless and fast." },
-            { name: "Sarah K", quote: "Highly recommend for any fintech startup." },
-          ].map((member, i) => (
-            <div key={i} className="member hover-tilt">
-              <img src={peopleImg} alt={member.name} />
-              <h3>{member.name}</h3>
-              <p className="quote">"{member.quote}"</p>
+      {/* Founders Section */}
+      <section ref={founders.ref}
+        className={`founders ${founders.isVisible ? "animate" : ""}`}>
+        <div className="container">
+          <h2 className="section-title">Meet Our Visionary Founders</h2>
+          <p className="section-subtitle">
+            Guided by extensive expertise and a shared vision, our founders lead
+            BridgeBank towards a future of innovation in corporate banking.
+          </p>
+
+          <div className="grid grid-2">
+            <div className="profile-card">
+              <div className="profile-img">
+                <img src={peopleImg} alt="Founder 1" />
+              </div>
+              <h5 className="profile-name">Mutaz al ghimlas</h5>
+              <p className="profile-role">Co-Founder & CEO</p>
+              <p className="profile-desc">
+                Over two decades of experience in the banking sector and played a key role in KSA fintech vision 2030.
+              </p>
             </div>
-          ))}
+
+            <div className="profile-card">
+              <div className="profile-img">
+                <img src={peopleImg} alt="Founder 2" />
+              </div>
+              <h5 className="profile-name">Sultan al onizi</h5>
+              <p className="profile-role">Co-Founder & CTO</p>
+              <p className="profile-desc">
+                Over two decades of experience in the banking sector and played a key role in KSA fintech vision 2030.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* Founders */}
-      <section
-        ref={founders.ref}
-        className={`founders ${founders.isVisible ? "animate" : ""}`}
-      >
-        <h2>Our Founders</h2>
-        <div className="founder-list">
-          <div className="founder">
-            <h3>Mutaz al ghimlas</h3>
-            <p>Over 18+ years of experience in the banking sector and played a key role in KSA fintech vision 2030.</p>
-          </div>
-          <div className="founder">
-            <h3>Sultan al onizi</h3>
-            <p>Over 18+ years of experience in the banking sector and played a key role in KSA fintech vision 2030.</p>
+      {/* Team Section */}
+      <section ref={team.ref}
+        className={`team ${team.isVisible ? "animate" : ""}`}>
+        <div className="container">
+          <h2 className="section-title">Meet Our Expert Team</h2>
+          <p className="section-subtitle">
+            Our diverse team of dedicated professionals is committed to
+            providing exceptional service and driving innovation in corporate
+            banking.
+          </p>
+
+          <div className="grid grid-3">
+            <div className="profile-card">
+              <div className="profile-img">
+                <img src={teamImg} alt="Team Member 1" />
+              </div>
+              <h5 className="profile-name">Renga M</h5>
+              <p className="profile-role">Head of Product</p>
+              <p className="profile-desc">
+                “Our commitment to client-centric solutions drives every product
+                innovation, ensuring seamless and reliable banking experiences.”
+              </p>
+            </div>
+
+            <div className="profile-card">
+              <div className="profile-img">
+                <img src={teamImg} alt="Team Member 2" />
+              </div>
+              <h5 className="profile-name">Salman</h5>
+              <p className="profile-role">Lead Architect</p>
+              <p className="profile-desc">
+                “Building robust and secure financial infrastructures is not
+                just our job; it is our passion, pushing the product forward.”
+              </p>
+            </div>
+
+            <div className="profile-card">
+              <div className="profile-img">
+                <img src={teamImg} alt="Team Member 3" />
+              </div>
+              <h5 className="profile-name">Sarah K</h5>
+              <p className="profile-role">Client Relations Manager</p>
+              <p className="profile-desc">
+                “We prioritize understanding our clients’ evolving challenges to
+                deliver personalized banking solutions that foster long-term
+                success.”
+              </p>
+            </div>
           </div>
         </div>
       </section>
+
+      <footer className="footer">
+        <div className="container footer-container">
+          <div className="footer-links">
+            <a href="#resources">Resources</a>
+            <a href="#company">Company</a>
+            <a href="#legal">Legal</a>
+          </div>
+          <div className="footer-icons">
+            <a href="#"><FaTwitter /></a>
+            <a href="#"><FaLinkedin /></a>
+            <a href="#"><FaFacebookF /></a>
+          </div>
+          <p className="footer-copy">© 2025 Omnypay. All rights reserved.</p>
+        </div>
+      </footer>
+
     </div>
   );
 };

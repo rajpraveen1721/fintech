@@ -34,19 +34,30 @@
     }
 
     button {
-      background: transparent;
-      border: 1px solid white;
       color: white;
-      padding: 0.4rem 0.75rem;
+      padding: 0.3rem 0.7rem;
+      font-size: 0.95rem;
       font-weight: 500;
       border-radius: 4px;
+      border: none;
       cursor: pointer;
       transition: all 0.3s ease;
+    }
 
-      &:hover {
+    .login-btn {
+      background: transparent;
+      color: #ffffff;
+      &:hover,:focus{
+        background: #009999;
+      }
+    }
+
+    .signup-btn {
+      background: #009999;
+      color: #ffffff;
+      &:hover,:focus{
         background: #ffffff;
         color: #009999;
-        border: 1px solid #009999;
       }
     }
   }
@@ -169,7 +180,7 @@
 
     .logout {
       color: red !important;
-      font-weight: 600;
+      font-weight: 500;
 
       &:hover {
         background-color: #ffeaea;

@@ -116,7 +116,7 @@ const Dashboard = () => {
                         }} />
                 </div>
                 <div className="chart-card">
-                    <h4>Exchange Rate Trends</h4>
+                    <h4>Exchange Rate</h4>
                     <Line
                         data={exchangeRateData}
                         options={{
