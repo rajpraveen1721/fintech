@@ -1,5 +1,4 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
@@ -12,11 +11,12 @@ import ManageAccounts from './pages/ManageAccounts';
 import PendingApprovals from './pages/PendingApprovals';
 import Operations from './pages/Operations';
 import Payments from './pages/Payments';
+import Header from './components/Header';
 
 export default function App() {
   return (
     <BrowserRouter>
-      <Navbar />
+      <Header />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />

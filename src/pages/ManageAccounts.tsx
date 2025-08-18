@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Modal, Button, Form, Row, Col } from "react-bootstrap";
 import { DataGrid, GridToolbar, type GridColDef } from "@mui/x-data-grid";
-import { FaEdit, FaTrash } from "react-icons/fa";
+import { MdOutlineEdit,MdOutlineDelete } from "react-icons/md";
+import { IoMdCloseCircle  } from "react-icons/io";
 import "./ManageAccounts.scss";
 import { TextField } from "@mui/material";
 
@@ -74,8 +75,8 @@ const ManageAccounts = () => {
             sortable: false,
             renderCell: (params) => (
                 <div className="actions-cell">
-                    <FaEdit className="edit-icon" onClick={() => setShowModal(true)} />
-                    <FaTrash className="delete-icon" onClick={() => handleDelete(params.row.id)} />
+                    <MdOutlineEdit className="edit-icon" onClick={() => setShowModal(true)} />
+                    <MdOutlineDelete className="delete-icon" onClick={() => handleDelete(params.row.id)} />
                 </div>
             ),
         },
@@ -248,7 +249,7 @@ const ManageAccounts = () => {
                                         {ibanFiles.map((file, index) => (
                                             <div className="file-item" key={index}>
                                                 <span className="file-name">{file.name}</span>
-                                                <FaTrash
+                                                <IoMdCloseCircle 
                                                     className="remove-icon"
                                                     onClick={() => handleRemoveFile(index)}
                                                 />

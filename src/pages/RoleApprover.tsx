@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import "./RoleApprover.scss";
-import { FaEdit, FaTrash } from 'react-icons/fa';
 import { Button, Modal } from "react-bootstrap";
 import { TextField } from "@mui/material";
+import { IoMdCloseCircle  } from "react-icons/io";
+import { MdOutlineEdit,MdOutlineDelete } from "react-icons/md";
 import { DataGrid, GridToolbar, type GridColDef } from "@mui/x-data-grid";
 
 interface User {
@@ -111,8 +112,8 @@ const RoleApprover = () => {
             sortable: false,
             renderCell: (params: any) => (
                 <div className="actions-cell">
-                    <FaEdit className="edit-icon" onClick={() => setShowModal(true)} />
-                    <FaTrash className="delete-icon" onClick={() => handleDelete(params.row.id)} />
+                    <MdOutlineEdit  className="edit-icon" onClick={() => setShowModal(true)} />
+                    <MdOutlineDelete className="delete-icon" onClick={() => handleDelete(params.row.id)} />
                 </div>
             )
         }
@@ -184,7 +185,7 @@ const RoleApprover = () => {
                                         className="remove-btn"
                                         onClick={() => handleRemoveApprover(num)}
                                     >
-                                        <FaTrash />
+                                        <IoMdCloseCircle  />
                                     </button>
                                 )}
                             </div>

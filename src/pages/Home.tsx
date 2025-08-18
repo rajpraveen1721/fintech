@@ -1,5 +1,4 @@
 import React, { useRef, useEffect, useState } from "react";
-import Dropdown from "react-bootstrap/Dropdown";
 import "./Home.scss";
 import aramcoLogo from "../assets/images/aramco.png";
 import neomLogo from "../assets/images/neom.png";
@@ -10,7 +9,8 @@ import partnersImg from "../assets/images/partners.jpg";
 import teamImg from "../assets/images/team.jpg";
 import corporateBankingImg from "../assets/images/corporate_banking.jpg"
 import { useNavigate } from "react-router-dom";
-import { FaChevronDown, FaFacebookF, FaLinkedin, FaTwitter } from "react-icons/fa";
+import Footer from "../components/Footer";
+import Navmenu from "../components/Navmenu";
 
 /** Hook for scroll-triggered animations */
 // const useInViewAnimation = (threshold: number = 0.2) => {
@@ -78,22 +78,6 @@ const Home: React.FC = () => {
   const founders = useInViewAnimation();
   const navigate = useNavigate();
 
-  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
-  const dropdownRef = useRef<HTMLDivElement | null>(null);
-
-  // Close dropdown when clicking outside
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setActiveDropdown(null);
-      }
-    };
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
-
   return (
     <div className="home">
       {/* Hero Section 1 with Navbar */}
@@ -102,101 +86,7 @@ const Home: React.FC = () => {
         className={`hero section-one ${hero1.isVisible ? "animate" : ""}`}
       >
         {/* Navbar */}
-        <div className="home-navbar fade-down">
-          <div className="nav-content" ref={dropdownRef}>
-            {/* Products Dropdown */}
-            <Dropdown
-              show={activeDropdown === "products"}
-              onMouseEnter={() => setActiveDropdown("products")}
-              onMouseLeave={() => { }}
-            >
-              <Dropdown.Toggle
-                variant="link"
-                id="dropdown-products"
-                className={`nav-dropdown-toggle ${activeDropdown === "products" ? "show" : ""}`}
-                onClick={() => setActiveDropdown(activeDropdown === "products" ? null : "products")}
-              >
-                Products <FaChevronDown className="dropdown-arrow" />
-              </Dropdown.Toggle>
-              <Dropdown.Menu className="custom-dropdown-menu dropdown-animate">
-                <ul className="product-list">
-                  <li>OLP</li>
-                  <li>Bulk OLP</li>
-                  <li>SADAD</li>
-                  <li>Treasury Exchange Rate</li>
-                  <li>Account Balance</li>
-                  <li>Account Credit Notification</li>
-                  <li>Account Statement</li>
-                  <li>Swift Copy</li>
-                  <li>Direct Credit</li>
-                  <li>Direct Debit</li>
-                  <li>POS Merchant Statement</li>
-                  <li>Payroll</li>
-                  <li>Account Verification</li>
-                  <li>CRN Verification</li>
-                </ul>
-              </Dropdown.Menu>
-            </Dropdown>
-
-            {/* Developers Dropdown */}
-            <Dropdown
-              show={activeDropdown === "developers"}
-              onMouseEnter={() => setActiveDropdown("developers")}
-              onMouseLeave={() => { }}
-            >
-              <Dropdown.Toggle
-                variant="link"
-                id="dropdown-developers"
-                className={`nav-dropdown-toggle ${activeDropdown === "developers" ? "show" : ""}`}
-                onClick={() => setActiveDropdown(activeDropdown === "developers" ? null : "developers")}
-              >
-                Developers <FaChevronDown className="dropdown-arrow" />
-              </Dropdown.Toggle>
-              <Dropdown.Menu className="custom-dropdown-menu dropdown-animate">
-                <ul className="developer-list">
-                  <li>Documentation</li>
-                  <li>Development</li>
-                  <li>Libraries</li>
-                  <li>API Reference</li>
-                  <li>Product Demos</li>
-                </ul>
-              </Dropdown.Menu>
-            </Dropdown>
-
-            {/* Resources Dropdown */}
-            <Dropdown
-              show={activeDropdown === "resources"}
-              onMouseEnter={() => setActiveDropdown("resources")}
-              onMouseLeave={() => { }}
-            >
-              <Dropdown.Toggle
-                variant="link"
-                id="dropdown-resources"
-                className={`nav-dropdown-toggle ${activeDropdown === "resources" ? "show" : ""}`}
-                onClick={() => setActiveDropdown(activeDropdown === "resources" ? null : "resources")}
-              >
-                Resources <FaChevronDown className="dropdown-arrow" />
-              </Dropdown.Toggle>
-              <Dropdown.Menu className="custom-dropdown-menu dropdown-animate">
-                <ul className="resources-list">
-                  <li>Blog</li>
-                  <li>Library</li>
-                  <li>Industry Resources</li>
-                  <li>Customer Stories</li>
-                  <li>Annual Conference</li>
-                </ul>
-              </Dropdown.Menu>
-            </Dropdown>
-
-            {/* About Us */}
-            <span className="nav-item">About Us</span>
-
-            {/* Contact Button */}
-            <div className="nav-actions">
-              <button className="contact-btn" onClick={() => navigate('/contactus')}>Contact Us</button>
-            </div>
-          </div>
-        </div>
+        <Navmenu />
 
         {/* Section 1 Content */}
         <div className="hero-content center">
@@ -347,23 +237,7 @@ const Home: React.FC = () => {
           </div>
         </div>
       </section>
-
-      <footer className="footer">
-        <div className="container footer-container">
-          <div className="footer-links">
-            <a href="#resources">Resources</a>
-            <a href="#company">Company</a>
-            <a href="#legal">Legal</a>
-          </div>
-          <div className="footer-icons">
-            <a href="#"><FaTwitter /></a>
-            <a href="#"><FaLinkedin /></a>
-            <a href="#"><FaFacebookF /></a>
-          </div>
-          <p className="footer-copy">© 2025 Omnypay. All rights reserved.</p>
-        </div>
-      </footer>
-
+          <Footer />
     </div>
   );
 };

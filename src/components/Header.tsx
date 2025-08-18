@@ -1,14 +1,14 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FiLogOut, FiUser, FiSettings } from "react-icons/fi";
-import "./Navbar.scss";
+import "./Header.scss";
 import { authService } from "../services/AuthService";
 import Sidebar from "./Sidebar";
 import logo from "../assets/images/logo.png";
 
 import { Dropdown } from "react-bootstrap";
 
-const Navbar = () => {
+const Header = () => {
   const navigate = useNavigate();
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
@@ -89,4 +89,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default Header;

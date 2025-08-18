@@ -300,19 +300,9 @@
   }
 }
 
-/* ========== Responsive ========== */
 
 /* Tablet */
 @media (max-width: 1024px) {
-  .home-navbar .nav-content {
-    gap: 15px;
-    flex-wrap: wrap;
-  }
-
-  .home-navbar .custom-dropdown-menu {
-    min-width: 500px;
-  }
-
   .hero h1 {
     font-size: 36px;
   }
@@ -328,36 +318,10 @@
   .grid.grid-3 {
     grid-template-columns: repeat(2, 1fr);
   }
-
-  .footer .footer-links {
-    gap: 1rem;
-    font-size: 0.9rem;
-  }
 }
 
 /* Mobile */
 @media (max-width: 768px) {
-  .home-navbar {
-    padding: 10px;
-
-    .nav-content {
-      flex-direction: column;
-      align-items: center;
-      gap: 12px;
-
-      .dropdown-menu {
-        position: static !important;
-        transform: none !important;
-        margin-top: 10px;
-      }
-
-      .custom-dropdown-menu {
-        min-width: 100% !important;
-        padding: 10px;
-      }
-    }
-  }
-
   .hero h1 {
     font-size: 26px;
   }
@@ -391,20 +355,6 @@
   .grid.grid-3 {
     grid-template-columns: 1fr;
   }
-
-  .footer .footer-container {
-    gap: 1rem;
-    flex-direction: column;
-  }
-
-  .footer .footer-links {
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-
-  .footer .footer-icons {
-    justify-content: center;
-  }
 }
 
 /* Small Mobile */
@@ -428,74 +378,6 @@
       width: 80px;
       height: 80px;
     }
-  }
-}
-
-/* Footer */
-.footer {
-  background: #ffffff;
-  color: #000000;
-  padding: 1rem 0;
-  text-align: center;
-
-  .footer-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 1rem;
-  }
-
-  .footer-links {
-    display: flex;
-    flex-direction: row;
-    gap: 2rem;
-
-    a {
-      color: #000;
-      text-decoration: none;
-      font-size: 0.95rem;
-      position: relative;
-      transition: color 0.3s;
-
-      &:hover {
-        color: #009999;
-      }
-
-      &::after {
-        content: "";
-        position: absolute;
-        left: 0;
-        bottom: -4px;
-        width: 0%;
-        height: 2px;
-        background: #009999;
-        transition: width 0.3s;
-      }
-
-      &:hover::after {
-        width: 100%;
-      }
-    }
-  }
-
-  .footer-icons {
-    display: flex;
-    gap: 1.2rem;
-
-    a {
-      color: #000000;
-      font-size: 1.3rem;
-      transition: color 0.3s;
-
-      &:hover {
-        color: #009999;
-      }
-    }
-  }
-
-  .footer-copy {
-    font-size: 0.85rem;
-    margin: 0;
   }
 }
 
@@ -602,195 +484,4 @@
       object-fit: cover;
     }
   }
-}
-
-/* Navbar */
-.home-navbar {
-  width: 100%;
-  animation: fadeDown 0.6s ease forwards;
-  margin-bottom: 30px;
-  position: relative;
-  z-index: 3;
-  background: transparent !important;
-
-  .nav-content {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-
-    .nav-dropdown-toggle {
-      font-size: 16px;
-      font-weight: 600;
-      color: #fff !important;
-      text-decoration: none;
-
-      &::after {
-        display: none;
-      }
-
-      &.show,
-      &:focus,
-      &:active,
-      &:hover {
-        background-color: rgba(255, 255, 255, 0.15) !important;
-        color: #fff !important;
-        border-radius: 6px;
-      }
-    }
-
-    .dropdown {
-      position: relative;
-
-      .dropdown-menu {
-        left: 50% !important;
-        transform: translateX(-50%) !important;
-        margin-top: 45px;
-      }
-    }
-
-    .custom-dropdown-menu {
-      min-width: 700px;
-      padding: 15px;
-      border-radius: 8px;
-      background-color: #fff;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-
-      .product-list {
-        display: flex;
-        flex-wrap: wrap;
-
-        li {
-          width: 30%;
-        }
-      }
-
-      .product-list,
-      .developer-list,
-      .resources-list {
-        margin: 0;
-        padding-left: 20px;
-
-        li {
-          margin-bottom: 8px;
-          font-size: 14px;
-          font-weight: 500;
-          color: #008080;
-          cursor: pointer;
-          transition: color 0.2s ease;
-
-          &:hover {
-            color: #004d4d;
-          }
-        }
-      }
-    }
-
-    .nav-item {
-      font-size: 16px;
-      font-weight: 600;
-      padding: 5px 10px;
-      color: #fff !important;
-      cursor: pointer;
-
-      &:hover,
-      &:focus {
-        background-color: rgba(255, 255, 255, 0.15) !important;
-        color: #fff !important;
-        border-radius: 6px;
-      }
-    }
-
-    .nav-actions .contact-btn {
-      background: transparent;
-      border: 1px solid #fff !important;
-      color: #fff !important;
-      padding: 8px 16px;
-      border-radius: 20px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s ease;
-
-      &:hover {
-        background: #fff !important;
-        color: #004d4d !important;
-      }
-    }
-  }
-}
-
-/* Navbar hover, focus, click */
-.home-navbar .nav-content .nav-dropdown-toggle {
-  position: relative;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  transition: background 0.3s, transform 0.3s;
-
-  &:hover,
-  &:focus {
-    background: rgba(255, 255, 255, 0.15) !important;
-    transform: translateY(-2px);
-  }
-
-  &:active {
-    transform: scale(0.97);
-  }
-
-  /* Arrow */
-  .dropdown-arrow {
-    transition: transform 0.3s ease;
-  }
-
-  &.show .dropdown-arrow {
-    transform: rotate(180deg);
-  }
-}
-
-/* Dropdown open/close animation */
-.fade-dropdown {
-  animation: dropdownFadeIn 0.3s ease forwards;
-}
-
-@keyframes dropdownFadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-8px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* When closing, add reverse animation */
-.fade-dropdown.hide {
-  animation: dropdownFadeOut 0.25s ease forwards;
-}
-
-@keyframes dropdownFadeOut {
-  from {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  to {
-    opacity: 0;
-    transform: translateY(-8px);
-  }
-}
-
-
-.dropdown-animate {
-  opacity: 0;
-  transform: translateY(-8px);
-  transition: all 0.25s ease-in-out;
-  pointer-events: none;
-}
-
-.show>.dropdown-menu.dropdown-animate {
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto;
 }
