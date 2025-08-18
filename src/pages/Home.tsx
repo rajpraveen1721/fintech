@@ -78,21 +78,21 @@ const Home: React.FC = () => {
   const founders = useInViewAnimation();
   const navigate = useNavigate();
 
-const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
-const dropdownRef = useRef<HTMLDivElement | null>(null);
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const dropdownRef = useRef<HTMLDivElement | null>(null);
 
-// Close dropdown when clicking outside
-useEffect(() => {
-  const handleClickOutside = (event: MouseEvent) => {
-    if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-      setActiveDropdown(null);
-    }
-  };
-  document.addEventListener("mousedown", handleClickOutside);
-  return () => {
-    document.removeEventListener("mousedown", handleClickOutside);
-  };
-}, []);
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setActiveDropdown(null);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   return (
     <div className="home">
@@ -107,16 +107,16 @@ useEffect(() => {
             {/* Products Dropdown */}
 
             <Dropdown
-    show={activeDropdown === "products"}
-    onMouseEnter={() => setActiveDropdown("products")}
-    onMouseLeave={() => {}}
-  >
-    <Dropdown.Toggle
-      variant="link"
-      id="dropdown-products"
-      className={`nav-dropdown-toggle ${activeDropdown === "products" ? "show" : ""}`}
-      onClick={() => setActiveDropdown(activeDropdown === "products" ? null : "products")}
-    >
+              show={activeDropdown === "products"}
+              onMouseEnter={() => setActiveDropdown("products")}
+              onMouseLeave={() => { }}
+            >
+              <Dropdown.Toggle
+                variant="link"
+                id="dropdown-products"
+                className={`nav-dropdown-toggle ${activeDropdown === "products" ? "show" : ""}`}
+                onClick={() => setActiveDropdown(activeDropdown === "products" ? null : "products")}
+              >
                 Products <FaChevronDown className="dropdown-arrow" />
               </Dropdown.Toggle>
               <Dropdown.Menu className="custom-dropdown-menu dropdown-animate">
@@ -141,16 +141,16 @@ useEffect(() => {
 
             {/* Developers Dropdown */}
             <Dropdown
-    show={activeDropdown === "developers"}
-    onMouseEnter={() => setActiveDropdown("developers")}
-    onMouseLeave={() => {}}
-  >
-    <Dropdown.Toggle
-      variant="link"
-      id="dropdown-developers"
-      className={`nav-dropdown-toggle ${activeDropdown === "developers" ? "show" : ""}`}
-      onClick={() => setActiveDropdown(activeDropdown === "developers" ? null : "developers")}
-    >
+              show={activeDropdown === "developers"}
+              onMouseEnter={() => setActiveDropdown("developers")}
+              onMouseLeave={() => { }}
+            >
+              <Dropdown.Toggle
+                variant="link"
+                id="dropdown-developers"
+                className={`nav-dropdown-toggle ${activeDropdown === "developers" ? "show" : ""}`}
+                onClick={() => setActiveDropdown(activeDropdown === "developers" ? null : "developers")}
+              >
                 Developers <FaChevronDown className="dropdown-arrow" />
               </Dropdown.Toggle>
               <Dropdown.Menu className="custom-dropdown-menu dropdown-animate">
